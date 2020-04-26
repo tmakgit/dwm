@@ -86,7 +86,7 @@ index 4465af1..6474055 100644
  		arrange(selmon);
 @@ -1522,7 +1548,7 @@ setmfact(const Arg *arg)
  	f = arg->f < 1.0 ? arg->f + selmon->mfact : arg->f - 1.0;
- 	if (f < 0.1 || f > 0.9)
+ 	if (f < 0.05 || f > 0.95)
  		return;
 -	selmon->mfact = f;
 +	selmon->mfact = selmon->pertag->mfacts[selmon->pertag->curtag] = f;
