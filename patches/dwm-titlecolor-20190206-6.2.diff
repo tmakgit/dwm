@@ -35,7 +35,7 @@ index 4465af1..216e1f3 100644
         NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 @@ -730,7 +730,7 @@ drawbar(Monitor *m)
  
- 	if ((w = m->ww - sw - x) > bh) {
+ 	if ((w = m->ww - tw - x) > bh) {
  		if (m->sel) {
 -			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 +			drw_setscheme(drw, scheme[m == selmon ? SchemeTitle : SchemeNorm]);
