@@ -1,0 +1,1 @@
+/home/tmak/git/configs/dwm/config.h.dwm
