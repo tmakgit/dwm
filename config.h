@@ -8,18 +8,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "DejaVu Sans Mono:size=12" };
 static const char dmenufont[]       = "DejaVu Sans Mono:size=12";
 
-static const char col_gray1[]       = "#1d2021";
-static const char col_gray2[]       = "#458588";
-static const char col_gray3[]       = "#928374";
-static const char col_gray4[]       = "#1d2021";
-static const char col_cyan[]        = "#458588";
-static const char col_font[]        = "#ebdbb2";
-static const char col_orange[]      = "#d79921";
+static const char col_black[]       = "#000000";
+static const char col_green[]       = "#00ee00";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
-        [SchemeNorm] = { col_font, col_gray1, col_gray3 },
-        [SchemeSel]  = { col_gray4, col_orange,  col_cyan  },
-        [SchemeTitle] = { col_gray4, col_cyan, col_cyan },
+        [SchemeNorm] = { col_green, col_black, col_green},
+        [SchemeSel]  = { col_black, col_green,  col_green},
+        [SchemeTitle] = { col_green, col_black, col_green},
 };
 
 /* tagging */
@@ -33,7 +28,7 @@ static const Rule rules[] = {
 	 */
 	/* class      		instance    title       	tags mask     isfloating   monitor */
 	{ "Gimp",     		NULL,       NULL,       	0,            1,           -1 },
-	{ NULL,				NULL,		"USR_WIN10-IT(CO)",	    1 << 0,		  0,		   -1 },
+	{ NULL,				NULL,		"USR_WIN10-IT (CO)",	    1 << 0,		  0,		   -1 },
 	{ NULL,				NULL,		"USR-WIN10-IT",	1 << 1,		  0,		   -1 },
 	{ "screen-256color",	NULL,	NULL,    		1 << 2,		  0,		   -1 },
 	//{ NULL,				NULL,		"st",    		1 << 2,		  0,		   -1 },
@@ -79,7 +74,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, "-p", dmenuprompt, NULL };
+ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_green, "-sb", col_green, "-sf", col_black, "-p", dmenuprompt, NULL };
 
 
 /* commands */
@@ -163,56 +158,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-// Black on White 
-//static const char col_black[]       = "#000000";
-//static const char col_gray[]        = "#7f7f7f";
-//static const char col_white[]       = "#ffffff";
-//static const char col_red[]			= "#cd0000";
-//static const char *colors[][3]      = {
-//
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { col_black, col_white, col_gray },
-//	[SchemeSel]  = { col_black, col_gray, col_red},
-//};
-
-// BLACK ON WHITE DMENU
-//static const char *dmenucmd[] 	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_white, "-nf", col_black, "-sb", col_gray, "-sf", col_black, "-p", dmenuprompt, NULL };
-
-
-// Solarized COLORS
-//static const char S_base03[]      = "#002b36";
-//static const char S_base02[]      = "#073642";
-//static const char S_base01[]      = "#586e75";
-//static const char S_base00[]      = "#657b83";
-//static const char S_base0[]       = "#839496";
-//static const char S_base1[]       = "#93a1a1";
-//static const char S_base2[]       = "#eee8d5";
-//static const char S_base3[]       = "#fdf6e3";
-//static const char S_yellow[] 	  = "#b58900";
-//static const char S_orange[] 	  = "#cb4b16";
-//static const char S_red[] 		  = "#dc322f";
-//static const char S_magenta[]	  = "#d33682";
-//static const char S_violet[] 	  = "#6c71c4";
-//static const char S_blue[]        = "#268bd2";
-//static const char S_cyan[] 	      = "#2aa198";
-//static const char S_green[]    	  = "#859900";
-//static const char *colors[][3]      = {
-//
-//// Solarized Dark bar
-//	/*               fg         bg         border   */
-//    [SchemeNorm] = { S_base1,  S_base03,    S_base02 },
-//    [SchemeSel]  = { S_base2,   S_base01,    S_red },
-//};
-//
-//// Solarized Light bar
-//	/*               fg         bg         border   */
-//	[SchemeNorm] = { S_base03,  S_base3,    S_base02 },
-//	[SchemeSel]  = { S_base03,  S_base1,    S_red},
-//};
-// SOLARIZED LIGHT DMENU
-//static const char *dmenucmd[] 	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", S_base3, "-nf", S_base03, "-sb", S_base1, "-sf", S_base03, NULL };
-
-// SOLARIZED DARK DMENU
-//static const char *dmenucmd[] 	= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", S_base03, "-nf", S_base3, "-sb", S_base01, "-sf", S_base3, NULL };
-
-
