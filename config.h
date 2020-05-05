@@ -9,12 +9,13 @@ static const char *fonts[]          = { "DejaVu Sans Mono:size=12" };
 static const char dmenufont[]       = "DejaVu Sans Mono:size=12";
 
 static const char col_black[]       = "#000000";
-static const char col_green[]       = "#00ee00";
+static const char col_white[]       = "#e5e5e5";
+static const char col_blue[]        = "Navy";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
-        [SchemeNorm] = { col_green, col_black, col_green},
-        [SchemeSel]  = { col_black, col_green,  col_green},
-        [SchemeTitle] = { col_green, col_black, col_green},
+        [SchemeNorm] = { col_white, col_black, col_white},
+        [SchemeSel]  = { col_white, col_blue,  col_white},
+        [SchemeTitle] = { col_white, col_blue, col_white},
 };
 
 /* tagging */
@@ -74,7 +75,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
- static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_green, "-sb", col_green, "-sf", col_black, "-p", dmenuprompt, NULL };
+ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", col_black, "-p", dmenuprompt, NULL };
 
 
 /* commands */
