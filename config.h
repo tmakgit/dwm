@@ -31,9 +31,7 @@ static const Rule rules[] = {
 	{ "Gimp",     		NULL,       NULL,       	0,            1,           -1 },
 	{ NULL,				NULL,		"USR_WIN10-IT (CO)",	    1 << 0,		  0,		   -1 },
 	{ NULL,				NULL,		"USR-WIN10-IT",	1 << 1,		  0,		   -1 },
-	{ "screen-256color",	NULL,	NULL,    		1 << 2,		  0,		   -1 },
-	//{ NULL,				NULL,		"st",    		1 << 2,		  0,		   -1 },
-	{ "st-256color",	NULL,		NULL,    		1 << 2,		  0,		   -1 },
+	{ "st-16color",	NULL,		NULL,    		1 << 2,		  0,		   -1 },
 	{ "XTerm",			NULL,		NULL,    		1 << 2,		  0,		   -1 },
 	{ "Xfce4-terminal",			NULL,		NULL,    		1 << 2,		  0,		   -1 },
 	{ "Firefox",	NULL,       NULL,       	1 << 3,       0,           -1 },
@@ -75,7 +73,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
- static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", col_black, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
 
 
 /* commands */
