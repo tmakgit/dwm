@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -11,11 +11,12 @@ static const char dmenufont[]       = "DejaVu Sans Mono:size=12";
 static const char col_black[]       = "#000000";
 static const char col_white[]       = "#e5e5e5";
 static const char col_blue[]        = "Navy";
+static const char col_red[]         = "red3";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
-        [SchemeNorm] = { col_white, col_black, col_white},
-        [SchemeSel]  = { col_white, col_blue,  col_white},
-        [SchemeTitle] = { col_white, col_blue, col_white},
+        [SchemeNorm] = { col_black, col_white, col_white},
+        [SchemeSel]  = { col_white, col_blue,  col_red},
+        [SchemeTitle] = { col_white, col_blue, col_red},
 };
 
 /* tagging */
@@ -73,7 +74,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_white, "-nf", col_black, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
 
 
 /* commands */
