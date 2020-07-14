@@ -9,15 +9,14 @@ static const char *fonts[]          = { "DejaVu Sans Mono:size=12" };
 static const char dmenufont[]       = "DejaVu Sans Mono:size=12";
 
 static const char col_black[]       = "black";
-static const char col_offwhite[]    = "grey90";
-static const char col_white[]       = "white";
-static const char col_blue[]        = "Navy";
+static const char col_grey[]        = "grey70";
+static const char col_highlight[]   = "SteelBlue4";
 static const char col_red[]         = "red3";
 static const char *colors[][3]      = {
-        /*               fg         bg         border   */
-        [SchemeNorm] = { col_black, col_offwhite, col_offwhite},
-        [SchemeSel]  = { col_white, col_blue,  col_red},
-        [SchemeTitle] = { col_white, col_blue, col_red},
+        /*               fg          bg             border   */
+        [SchemeNorm]  = { col_grey,  col_black,     col_grey},
+        [SchemeSel]   = { col_black, col_highlight, col_red},
+        [SchemeTitle] = { col_black, col_highlight, col_red},
 };
 
 /* tagging */
@@ -29,19 +28,18 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      		instance    title       	tags mask     isfloating   monitor */
-	{ "Gimp",     		NULL,       NULL,       	0,            1,           -1 },
-	{ NULL,				NULL,		"USR_WIN10-IT (CO)",	    1 << 0,		  0,		   -1 },
-	{ NULL,				NULL,		"USR-WIN10-IT",	1 << 1,		  0,		   -1 },
-	{ "st-16color",	NULL,		NULL,    		1 << 2,		  0,		   -1 },
-	{ "XTerm",			NULL,		NULL,    		1 << 2,		  0,		   -1 },
-	{ "Xfce4-terminal",			NULL,		NULL,    		1 << 2,		  0,		   -1 },
-	{ "Firefox",	NULL,       NULL,       	1 << 3,       0,           -1 },
-	{ "Mattermost", 	NULL,  		NULL,       	1 << 4,		  0,		   -1 },
-	{ "Signal", 		NULL,		NULL,       	1 << 4,		  0,		   -1 },
-	{ "Bitwarden", 		NULL,		NULL,       	1 << 5,		  0,		   -1 },
-	{ "Steam", 		NULL,		NULL,       	1 << 5,		  0,		   -1 },
-	{ "Zathura", 		NULL,		NULL,       	1 << 5,		  0,		   -1 },
+	/* class      		instance    title       	     tags mask        isfloating   monitor */
+	{ "Gimp",     		NULL,       NULL,       	     0,               1,           -1 },
+	{ NULL,				NULL,		"USR-WIN10-IT",	     1 << 0,		  0,		   -1 },
+	{ "st-16color",	    NULL,		NULL,    		     1 << 2,		  0,		   -1 },
+	{ "XTerm",			NULL,		NULL,    		     1 << 2,		  0,		   -1 },
+	{ "Xfce4-terminal",	NULL,		NULL,    		     1 << 2,		  0,		   -1 },
+	{ "firefox",        NULL,       NULL,       	     1 << 3,          0,           -1 },
+	{ "Mattermost", 	NULL,  		NULL,       	     1 << 4,		  0,		   -1 },
+	{ "Signal", 		NULL,		NULL,       	     1 << 4,		  0,		   -1 },
+	{ "Bitwarden", 		NULL,		NULL,       	     1 << 5,		  0,		   -1 },
+	{ "Steam", 		    NULL,		NULL,       	     1 << 5,		  0,		   -1 },
+	{ "Zathura", 		NULL,		NULL,       	     1 << 5,		  0,		   -1 },
 };
 
 /* layout(s) */
@@ -75,7 +73,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_offwhite, "-nf", col_black, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_grey, "-sb", col_highlight, "-sf", col_black, "-p", dmenuprompt, NULL };
 
 
 /* commands */
