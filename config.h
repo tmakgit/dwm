@@ -5,18 +5,19 @@ static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code:size=12" };
-static const char dmenufont[]       = "Fira Code:size=12";
+static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
 
-static const char col_black[]       = "black";
-static const char col_grey[]        = "grey70";
-static const char col_green[]       = "SeaGreen4";
+static const char col_bg[]          = "black";
+static const char col_fg[]          = "grey80";
+static const char col_selfg[]       = "grey95"; /* r:242 g:242 b:242 */
+static const char col_selbg[]       = "grey30";
 static const char col_red[]         = "red3";
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
-        [SchemeNorm]  = { col_grey,  col_black, col_grey},
-        [SchemeSel]   = { col_black, col_green, col_red},
-        [SchemeTitle] = { col_black, col_green, col_red},
+        [SchemeNorm]  = { col_fg,    col_bg,    col_fg},
+        [SchemeSel]   = { col_selfg, col_selbg, col_red},
+        [SchemeTitle] = { col_selfg, col_bg,    col_red},
 };
 
 /* tagging */
@@ -73,7 +74,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_grey, "-sb", col_green, "-sf", col_black, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_selbg, "-sf", col_selfg, "-p", dmenuprompt, NULL };
 
 
 /* commands */
