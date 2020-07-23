@@ -9,10 +9,10 @@ static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohi
 static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
 
 static const char col_bg[]          = "black";
-static const char col_fg[]          = "grey80";
-static const char col_selfg[]       = "grey95"; /* r:242 g:242 b:242 */
-static const char col_selbg[]       = "grey30";
-static const char col_red[]         = "red3";
+static const char col_fg[]          = "grey80"; /* #c8c8c8 r:200 g:200 b:200 */
+static const char col_selfg[]       = "grey95"; /* #e5e5e5 r:242 g:242 b:242 */
+static const char col_selbg[]       = "grey30"; /* #4e4e4e r:78  g:78  b:78  */
+static const char col_red[]         = "red3";   /* #af0000 r:175 g:0   b:0   */
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
         [SchemeNorm]  = { col_fg,    col_bg,    col_fg},
