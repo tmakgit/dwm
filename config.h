@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { " CO ", " PO ", "term", "web", "chat", "rand" };
+static const char *tags[] = { "mail", " po ", "term", "web", " mm ", "rand" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,15 +32,14 @@ static const Rule rules[] = {
 	/* class      		instance    title       	     tags mask        isfloating   monitor */
 	{ "Gimp",     		NULL,       NULL,       	     0,               1,           -1 },
 	{ NULL,				NULL,		"USR-WIN10-IT",	     1 << 0,		  0,		   -1 },
-	{ "st-16color",	    NULL,		NULL,    		     1 << 2,		  0,		   -1 },
-	{ "XTerm",			NULL,		NULL,    		     1 << 2,		  0,		   -1 },
-	{ "Xfce4-terminal",	NULL,		NULL,    		     1 << 2,		  0,		   -1 },
-	{ "firefox",        NULL,       NULL,       	     1 << 3,          0,           -1 },
-	{ "Mattermost", 	NULL,  		NULL,       	     1 << 4,		  0,		   -1 },
-	{ "Signal", 		NULL,		NULL,       	     1 << 4,		  0,		   -1 },
-	{ "Bitwarden", 		NULL,		NULL,       	     1 << 5,		  0,		   -1 },
-	{ "Steam", 		    NULL,		NULL,       	     1 << 5,		  0,		   -1 },
-	{ "Zathura", 		NULL,		NULL,       	     1 << 5,		  0,		   -1 },
+	{ "st-16color",	    NULL,		NULL,    		     1 << 2,		  0,		   1 },
+	{ "XTerm",			NULL,		NULL,    		     1 << 2,		  0,		   1 },
+	{ "firefox",        NULL,       NULL,       	     1 << 3,          0,           1 },
+	{ "Mattermost", 	NULL,  		NULL,       	     1 << 4,		  0,		   1 },
+	{ "Signal", 		NULL,		NULL,       	     1 << 5,		  0,		   1 },
+	{ "Bitwarden", 		NULL,		NULL,       	     1 << 5,		  0,		   1 },
+	{ "Steam", 		    NULL,		NULL,       	     1 << 5,		  0,		   1 },
+	{ "Zathura", 		NULL,		NULL,       	     1 << 5,		  0,		   1 },
 };
 
 /* layout(s) */
