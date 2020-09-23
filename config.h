@@ -78,19 +78,20 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 
 
 /* commands */
-static const char *termcmd[]  	= { "dwm_terminal.sh",	 		NULL };
-static const char *audioup[] 	= { "audio_up.sh", 			NULL };
-static const char *audiodown[] 	= { "audio_down.sh", 		NULL };
-static const char *audiomute[] 	= { "audio_mute.sh", 		NULL };
-static const char *scrot[] 		= { "dwm_scrot.sh",				NULL };
-static const char *screenlock[] = { "dwm_lock.sh",				NULL };
-static const char *mpcplay[]	= { "mpc_play.sh",				NULL };
-static const char *mpcnext[]	= { "mpc_next.sh",				NULL };
-static const char *mpcprev[]	= { "mpc_prev.sh",				NULL };
-static const char *mpcrand[]	= { "mpc_rand.sh",				NULL };
-static const char *xbup[]		= { "xbacklight_inc.sh",		NULL };
-static const char *xbdown[]		= { "xbacklight_dec.sh",		NULL };
-static const char *click[]		= { "click.sh",			NULL };
+static const char *termcmd[]  	  = { "dwm_terminal.sh",	NULL };
+static const char *audioup[] 	  = { "audio_up.sh", 		NULL };
+static const char *audiodown[] 	  = { "audio_down.sh", 		NULL };
+static const char *audiomute[] 	  = { "audio_mute.sh", 		NULL };
+static const char *screenlock[]   = { "dwm_lock.sh",		NULL };
+static const char *mpcplay[]	  = { "mpc_play.sh",		NULL };
+static const char *mpcnext[]	  = { "mpc_next.sh",		NULL };
+static const char *mpcprev[]	  = { "mpc_prev.sh",		NULL };
+static const char *mpcrand[]	  = { "mpc_rand.sh",		NULL };
+static const char *xbup[]		  = { "xbacklight_inc.sh",	NULL };
+static const char *xbdown[]		  = { "xbacklight_dec.sh",	NULL };
+static const char *click[]		  = { "click.sh",		    NULL };
+static const char *print_screen[] = { "print_screen.sh",    NULL };
+static const char *area_screen[]  = { "area_screen.sh",     NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -131,7 +132,8 @@ static Key keys[] = {
 	{ MODKEY,						XK_equal,  		spawn,		   	{.v = audioup } },
 	{ MODKEY,						XK_minus,  		spawn,		   	{.v = audiodown } },
 	{ MODKEY,						XK_backslash,	spawn,	   		{.v = audiomute } },
-	{ MODKEY|ShiftMask, 			XK_Print,  		spawn,		   	{.v = scrot } },
+	{ 0,	                        XK_Print,  		spawn,		   	{.v = print_screen } },
+	{ ShiftMask,                    XK_Print,  		spawn,		   	{.v = area_screen } },
 	{ ControlMask|MODKEY,			XK_l,			spawn,			{.v = screenlock } },
 	{ MODKEY,						XK_m,			spawn,			{.v = mpcplay } },
 	{ MODKEY,						XK_n,			spawn,			{.v = mpcnext } },
