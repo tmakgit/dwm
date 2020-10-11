@@ -8,16 +8,16 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
 
-static const char col_bg[]          = "black";
-static const char col_fg[]          = "grey80"; /* #c8c8c8 r:200 g:200 b:200 */
-static const char col_selfg[]       = "grey95"; /* #e5e5e5 r:242 g:242 b:242 */
-static const char col_selbg[]       = "grey30"; /* #4e4e4e r:78  g:78  b:78  */
-static const char col_red[]         = "red3";   /* #af0000 r:175 g:0   b:0   */
+static const char col_bg[]          = "#fdf6e3";
+static const char col_fg[]          = "#657b83";
+static const char col_selfg[]       = "#fdf6e3";
+static const char col_selbg[]       = "#2aa198";
+static const char col_red[]         = "#dc322f";
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
         [SchemeNorm]  = { col_fg,    col_bg,    col_fg},
         [SchemeSel]   = { col_selfg, col_selbg, col_red},
-        [SchemeTitle] = { col_selfg, col_bg,    col_red},
+        [SchemeTitle] = { col_selfg, col_selbg, col_red},
 };
 
 /* tagging */
@@ -34,7 +34,7 @@ static const Rule rules[] = {
 	{ "firefox",        NULL,       NULL,       	            1 << 0,          0,           1 },
 	{ NULL,				NULL,		"USR-WIN10-IT",	            1 << 1,		  0,		   0 },
 	{ NULL,             NULL,		"VMware Horizon Client",    1 << 1,		  0,		   0 },
-	{ "st-16color",	    NULL,		NULL,    		            1 << 2,		  0,		   1 },
+	{ "st-256color",	    NULL,		NULL,    		            1 << 2,		  0,		   1 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   1 },
 	{ "Mattermost", 	NULL,  		NULL,       	            1 << 3,		  0,		   1 },
 	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   1 },
