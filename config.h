@@ -31,16 +31,16 @@ static const Rule rules[] = {
 	 */
 	/* class      		instance    title       	            tags mask        isfloating   monitor */
 	{ "Gimp",     		NULL,       NULL,       	            0,               1,           -1 },
-	{ "firefox",        NULL,       NULL,       	            1 << 0,          0,           1 },
-	{ NULL,				NULL,		"USR-WIN10-IT",	            1 << 1,		  0,		   0 },
-	{ NULL,             NULL,		"VMware Horizon Client",    1 << 1,		  0,		   0 },
-	{ "st-256color",	    NULL,		NULL,    		            1 << 2,		  0,		   1 },
-	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   1 },
-	{ "Mattermost", 	NULL,  		NULL,       	            1 << 3,		  0,		   1 },
-	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   1 },
-	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   1 },
-	{ "Steam", 		    NULL,		NULL,       	            1 << 4,		  0,		   1 },
-	{ "Zathura", 		NULL,		NULL,       	            1 << 4,		  0,		   1 },
+	{ "firefox",        NULL,       NULL,       	            1 << 0,          0,           0 },
+	{ NULL,				NULL,		"USR-WIN10-IT",	            1 << 1,		  0,		   1 },
+	{ NULL,             NULL,		"VMware Horizon Client",    1 << 1,		  0,		   1 },
+	{ "st-256color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
+	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
+	{ "Mattermost", 	NULL,  		NULL,       	            1 << 3,		  0,		   0 },
+	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
+	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
+	{ "Steam", 		    NULL,		NULL,       	            1 << 4,		  0,		   0 },
+	{ "Zathura", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
 };
 
 /* layout(s) */
