@@ -8,11 +8,11 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
 
-static const char col_bg[]          = "#fdf6e3";
-static const char col_fg[]          = "#657b83";
-static const char col_selfg[]       = "#fdf6e3";
-static const char col_selbg[]       = "#2aa198";
-static const char col_red[]         = "#dc322f";
+static const char col_bg[]          = "#000000";
+static const char col_fg[]          = "#c0c0c0";
+static const char col_selbg[]       = "#c0c0c0";
+static const char col_selfg[]       = "#000000";
+static const char col_red[]         = "#cd0000";
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
         [SchemeNorm]  = { col_fg,    col_bg,    col_fg},
