@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -9,13 +9,13 @@ static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohi
 static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
 
 static const char col_bg[]          = "#000000";
-static const char col_fg[]          = "#c0c0c0";
-static const char col_selbg[]       = "#c0c0c0";
-static const char col_selfg[]       = "#000000";
+static const char col_fg[]          = "#c9c9c9";
+static const char col_selfg[]       = "#00cd00";
+static const char col_selbg[]       = "#262626";
 static const char col_red[]         = "#cd0000";
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
-        [SchemeNorm]  = { col_fg,    col_bg,    col_fg},
+        [SchemeNorm]  = { col_fg,    col_bg,    col_selbg},
         [SchemeSel]   = { col_selfg, col_selbg, col_red},
         [SchemeTitle] = { col_selfg, col_selbg, col_red},
 };
@@ -31,16 +31,18 @@ static const Rule rules[] = {
 	 */
 	/* class      		instance    title       	            tags mask        isfloating   monitor */
 	{ "Gimp",     		NULL,       NULL,       	            0,               1,           -1 },
-	{ "firefox",        NULL,       NULL,       	            1 << 0,          0,           0 },
+	{ "Firefox-esr",        NULL,       NULL,       	            1 << 0,          0,           0 },
 	{ NULL,				NULL,		"USR-WIN10-IT",	            1 << 1,		  0,		   1 },
 	{ NULL,             NULL,		"VMware Horizon Client",    1 << 1,		  0,		   1 },
-	{ "st-256color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
+	{ "st-16color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "Mattermost", 	NULL,  		NULL,       	            1 << 3,		  0,		   0 },
 	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
+    { "Slack",          NULL,       NULL,                       1 << 3,       0,           0 },
 	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
 	{ "Steam", 		    NULL,		NULL,       	            1 << 4,		  0,		   0 },
 	{ "Zathura", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
+    { "zoom",           NULL,       NULL,                       1 << 4,       0,           0 },
 };
 
 /* layout(s) */
