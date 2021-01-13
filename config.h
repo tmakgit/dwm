@@ -94,6 +94,8 @@ static const char *xbdown[]		  = { "xbacklight_dec.sh",	NULL };
 static const char *click[]		  = { "click.sh",		    NULL };
 static const char *print_screen[] = { "print_screen.sh",    NULL };
 static const char *area_screen[]  = { "area_screen.sh",     NULL };
+static const char *mouse_right[]  = { "mousemove_right.sh", NULL };
+static const char *mouse_left[]  = { "mousemove_left.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -144,6 +146,8 @@ static Key keys[] = {
 	{ 0,	XF86MonBrightnessUp,					spawn,			{.v = xbup } },
 	{ 0, XF86MonBrightnessDown,					spawn,			{.v = xbdown } },
 	{ ControlMask|MODKEY,			XK_i,			spawn,			{.v = click } },
+	{ ControlMask|MODKEY,			XK_u,			spawn,			{.v = mouse_left } },
+	{ ControlMask|MODKEY,			XK_o,			spawn,			{.v = mouse_right } },
 };
 
 /* button definitions */
