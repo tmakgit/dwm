@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "web", "vdi", "term", "chat", "misc" };
+static const char *tags[] = { "web", "pdf", "term", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,19 +30,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      		instance    title       	            tags mask        isfloating   monitor */
-	{ "Gimp",     		NULL,       NULL,       	            0,               1,           -1 },
-	{ "Firefox-esr",        NULL,       NULL,       	            1 << 0,          0,           0 },
-	{ NULL,				NULL,		"USR-WIN10-IT",	            1 << 1,		  0,		   1 },
-	{ NULL,             NULL,		"VMware Horizon Client",    1 << 1,		  0,		   1 },
+	{ "Gimp",     		NULL,       NULL,       	            0,            1,          -1 },
+	{ "Firefox-esr",    NULL,       NULL,       	            1 << 0,       0,           0 },
+	{ "Zathura", 		NULL,		NULL,       	            1 << 1,		  0,		   0 },
 	{ "st-16color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
-	{ "Mattermost", 	NULL,  		NULL,       	            1 << 3,		  0,		   0 },
 	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
-    { "Slack",          NULL,       NULL,                       1 << 3,       0,           0 },
-	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
-	{ "Steam", 		    NULL,		NULL,       	            1 << 4,		  0,		   0 },
-	{ "Zathura", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
-    { "zoom",           NULL,       NULL,                       1 << 4,       0,           0 },
+	{ "Bitwarden", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
+	{ "Steam", 		    NULL,		NULL,       	            1 << 3,		  0,		   0 },
+    { "zoom",           NULL,       NULL,                       1 << 3,       0,           0 },
+    { "Synergy",        NULL,       NULL,                       1 << 3,       0,           0 },
 };
 
 /* layout(s) */
