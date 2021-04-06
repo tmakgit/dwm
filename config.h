@@ -5,34 +5,40 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code:size=13:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Fira Code:size=13:antialias=true:autohint=true";
+static const char *fonts[]          = { "Fira Code:size=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Fira Code:size=14:antialias=true:autohint=true";
 
 // BLACK
-//static const char col_bg[]          = "#000000";
-//static const char col_fg[]          = "#c9c9c9";
-//static const char col_selfg[]       = "#00cd00";
-//static const char col_selbg[]       = "#262626";
-//static const char col_red[]         = "#cd0000";
-
-// SOLARIZED LIGHT
-
-static const char col_fg[]          = "#586e75";
-static const char col_bg[]          = "#fdf6e3";
-static const char col_selfg[]       = "#fdf6e3";
-static const char col_selbg[]       = "#657b83";
-static const char col_red[]         = "#dc322f";
+static const char col_bg[]          = "#000000";
+static const char col_fg[]          = "#c9c9c9";
+static const char col_selfg[]       = "#00cd00";
+static const char col_selbg[]       = "#262626";
+static const char col_red[]         = "#cd0000";
 
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
         [SchemeNorm]  = { col_fg,    col_bg,    col_selbg},
-        [SchemeSel]   = { col_bg, col_fg, col_red},
-        [SchemeTitle] = { col_bg, col_fg, col_red},
+        [SchemeSel]   = { col_selfg, col_selbg, col_red},
+        [SchemeTitle] = { col_selfg, col_selbg, col_red},
 };
+
+// SOLARIZED LIGHT
+//static const char col_fg[]          = "#586e75";
+//static const char col_bg[]          = "#fdf6e3";
+//static const char col_selfg[]       = "#fdf6e3";
+//static const char col_selbg[]       = "#657b83";
+//static const char col_red[]         = "#dc322f";
+
+//static const char *colors[][3]      = {
+//        /*               fg          bg         border   */
+//        [SchemeNorm]  = { col_fg,    col_bg,    col_selbg},
+//        [SchemeSel]   = { col_bg, col_fg, col_red},
+//        [SchemeTitle] = { col_bg, col_fg, col_red},
+//};
 
 /* tagging */
 //static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "web", "code", "term", "pdf", "misc" };
+static const char *tags[] = { "web", "pdf", "term", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -43,15 +49,15 @@ static const Rule rules[] = {
 	{ "Gimp",     		NULL,       NULL,       	            0,            1,          -1 },
 	{ "Firefox-esr",    NULL,       NULL,       	            1 << 0,       0,           0 },
 	{ "Google-chrome",  NULL,       NULL,       	            1 << 0,       0,           0 },
-	{ "Code",           NULL,       NULL,       	            1 << 1,       0,           0 },
+	{ "Zathura", 		NULL,		NULL,       	            1 << 1,		  0,		   0 },
+	//{ "Code",           NULL,       NULL,       	            1 << 1,       0,           0 },
 	{ "st-16color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
-	{ "Zathura", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
-	{ "Signal", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
-	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
-	{ "Steam", 		    NULL,		NULL,       	            1 << 4,		  0,		   0 },
-    { "zoom",           NULL,       NULL,                       1 << 4,       0,           0 },
-    { "Synergy",        NULL,       NULL,                       1 << 4,       0,           0 },
+	{ "Signal", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
+	{ "Bitwarden", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
+	{ "Steam", 		    NULL,		NULL,       	            1 << 3,		  0,		   0 },
+    { "zoom",           NULL,       NULL,                       1 << 3,       0,           0 },
+    { "Synergy",        NULL,       NULL,                       1 << 3,       0,           0 },
 };
 
 /* layout(s) */
@@ -135,7 +141,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_2,                      		1)
 	TAGKEYS(                        XK_3,                      		2)
 	TAGKEYS(                        XK_4,                      		3)
-	TAGKEYS(                        XK_5,                      		4)
+	//TAGKEYS(                        XK_5,                      		4)
 	//TAGKEYS(                        XK_6,                      		5)
 	//TAGKEYS(                        XK_7,                      		6)
 	//TAGKEYS(                        XK_8,                      		7)
