@@ -111,6 +111,7 @@ static const char *print_screen[] = { "print_screen.sh",    NULL };
 static const char *area_screen[]  = { "area_screen.sh",     NULL };
 static const char *mouse_right[]  = { "mousemove_right.sh", NULL };
 static const char *mouse_left[]  = { "mousemove_left.sh", NULL };
+static const char *stop_mplayer[]  = { "stop_mplayer.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -163,6 +164,7 @@ static Key keys[] = {
 	{ ControlMask|MODKEY,			XK_i,			spawn,			{.v = click } },
 	{ ControlMask|MODKEY,			XK_u,			spawn,			{.v = mouse_left } },
 	{ ControlMask|MODKEY,			XK_o,			spawn,			{.v = mouse_right } },
+	{ MODKEY,			XK_y,			spawn,			{.v = stop_mplayer } },
 };
 
 /* button definitions */
