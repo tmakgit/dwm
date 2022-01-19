@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -34,7 +34,7 @@ static const Rule rules[] = {
 	{ "Firefox-esr",    NULL,       NULL,       	            1 << 0,       0,           0 },
 	{ "Google-chrome",  NULL,       NULL,       	            1 << 0,       0,           0 },
 	{ "Microsoft Teams - Preview", NULL,	NULL,               1 << 1,		  0,		   0 },
-	{ "st-16color",	    NULL,		NULL,    		            1 << 2,		  0,		   0 },
+	{ "st-256color",    NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "Zathura", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
 	{ "feh",    		NULL,		NULL,       	            1 << 3,		  0,		   0 },
