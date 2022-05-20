@@ -65,6 +65,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
+#define MODKEY2 Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -101,6 +102,12 @@ static const char *area_screen[]  = { "area_screen.sh",     NULL };
 static const char *mouse_right[]  = { "mousemove_right.sh", NULL };
 static const char *mouse_left[]  = { "mousemove_left.sh", NULL };
 static const char *stop_mplayer[]  = { "stop_mplayer.sh", NULL };
+static const char *delkey[]  = { "delkey.sh", NULL };
+static const char *pgupkey[]  = { "pgupkey.sh", NULL };
+static const char *pgdownkey[]  = { "pgdownkey.sh", NULL };
+static const char *homekey[]  = { "homekey.sh", NULL };
+static const char *endkey[]  = { "endkey.sh", NULL };
+static const char *f11key[]  = { "f11key.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -143,6 +150,8 @@ static Key keys[] = {
 	{ MODKEY,						XK_backslash,	spawn,	   		{.v = audiomute } },
 	{ 0,	                        XK_Print,  		spawn,		   	{.v = area_screen } },
 	{ ShiftMask,                    XK_Print,  		spawn,		   	{.v = print_screen } },
+	{ MODKEY,	                    XK_F9,  		spawn,		   	{.v = area_screen } },
+	{ MODKEY|ShiftMask,                    XK_F9,  		spawn,		   	{.v = print_screen } },
 	{ ControlMask|MODKEY,			XK_l,			spawn,			{.v = screenlock } },
 	{ MODKEY,						XK_m,			spawn,			{.v = mpcplay } },
 	{ MODKEY,						XK_n,			spawn,			{.v = mpcnext } },
@@ -154,6 +163,13 @@ static Key keys[] = {
 	{ ControlMask|MODKEY,			XK_u,			spawn,			{.v = mouse_left } },
 	{ ControlMask|MODKEY,			XK_o,			spawn,			{.v = mouse_right } },
 	{ MODKEY,			XK_y,			spawn,			{.v = stop_mplayer } },
+	{ MODKEY2,			XK_BackSpace,			spawn,			{.v = delkey } },
+	{ MODKEY|ShiftMask,			XK_h,			spawn,			{.v = homekey } },
+	{ MODKEY|ShiftMask,			XK_l,			spawn,			{.v = endkey } },
+	{ MODKEY|ShiftMask,			XK_k,			spawn,			{.v = pgupkey } },
+	{ MODKEY|ShiftMask,			XK_j,			spawn,			{.v = pgdownkey } },
+	{ MODKEY|ShiftMask,			XK_F10,			spawn,			{.v = f11key } },
+	{ MODKEY,                       XK_F10,    		togglebar,      {0} },
 };
 
 /* button definitions */
