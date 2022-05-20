@@ -9,9 +9,9 @@ static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohi
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
 static const char col_bg[]          = "#000000";
-static const char col_fg[]          = "#feffff";
-static const char col_selfg[]       = "#e5e5e5";
+static const char col_fg[]          = "#c9c9c9";
 static const char col_selbg[]       = "#114488";
+static const char col_selfg[]       = "#c9c9c9";
 static const char col_bord[]        = "#cd0000";
 
 static const char *colors[][3]      = {
@@ -36,11 +36,11 @@ static const Rule rules[] = {
 	{ "Microsoft Teams - Preview", NULL,	NULL,               1 << 1,		  0,		   0 },
 	{ "st-256color",    NULL,		NULL,    		            1 << 2,		  0,		   0 },
 	{ "XTerm",			NULL,		NULL,    		            1 << 2,		  0,		   0 },
-	{ "Zathura", 		NULL,		NULL,       	            1 << 3,		  0,		   0 },
 	{ "Simplenote",		NULL,		NULL,       	            1 << 3,		  0,		   0 },
 	{ "feh",    		NULL,		NULL,       	            1 << 3,		  0,		   0 },
 	{ "Signal", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
 	{ "Bitwarden", 		NULL,		NULL,       	            1 << 4,		  0,		   0 },
+	{ "Zathura", 		NULL,		NULL,       	            1 << 5,		  0,		   0 },
     { "Handbrake",      NULL,       NULL,                       1 << 5,       0,           0 },
     { "obs",            NULL,       NULL,                       1 << 6,       0,           0 },
     { "zoom",           NULL,       NULL,                       1 << 7,       0,           0 },
