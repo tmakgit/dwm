@@ -9,13 +9,13 @@ static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohi
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
 static const char col_bg[]          = "#000000";
-static const char col_fg[]          = "#66cc00";
+static const char col_fg[]          = "#5cc05c";
 static const char col_selbg[]       = "#303030";
-static const char col_selfg[]       = "#66cc00";
+static const char col_selfg[]       = "#5cc05c";
 static const char col_invfg[]       = "#336600"; /* keep for invfg*/
 static const char col_invbg[]       = "#101010";
 static const char col_invbord[]     = "#303030";
-static const char col_bord[]        = "#66cc00";
+static const char col_bord[]        = "#5cc05c";
 
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
