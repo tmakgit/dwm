@@ -8,14 +8,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
-static const char col_bg[]          = "#000000";
-static const char col_fg[]          = "#5cc05c";
-static const char col_selbg[]       = "#303030";
-static const char col_selfg[]       = "#5cc05c";
+static const char col_bg[]          = "#cccccc";
+static const char col_fg[]          = "#000000";
+static const char col_selbg[]       = "#005fd7";
+static const char col_selfg[]       = "#ffffff";
 static const char col_invfg[]       = "#336600"; /* keep for invfg*/
 static const char col_invbg[]       = "#101010";
 static const char col_invbord[]     = "#303030";
-static const char col_bord[]        = "#5cc05c";
+static const char col_bord[]        = "#cd0000";
 
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
