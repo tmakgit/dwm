@@ -12,8 +12,8 @@ static const char col_bg[]          = "#cccccc";
 static const char col_fg[]          = "#000000";
 static const char col_selbg[]       = "#005fd7";
 static const char col_selfg[]       = "#ffffff";
-static const char col_invfg[]       = "#336600"; /* keep for invfg*/
-static const char col_invbg[]       = "#101010";
+static const char col_invfg[]       = "#000000";
+static const char col_invbg[]       = "#a8a8a8";
 static const char col_invbord[]     = "#303030";
 static const char col_bord[]        = "#cd0000";
 
