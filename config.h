@@ -8,12 +8,12 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
-static const char col_bg[]          = "#cccccc";
-static const char col_fg[]          = "#000000";
-static const char col_selbg[]       = "#005fd7";
-static const char col_selfg[]       = "#ffffff";
+static const char col_bg[]          = "#000000";
+static const char col_fg[]          = "#7dfdfe";
+static const char col_selbg[]       = "#7dfdfe";
+static const char col_selfg[]       = "#000000";
 static const char col_invfg[]       = "#000000";
-static const char col_invbg[]       = "#a8a8a8";
+static const char col_invbg[]       = "#0b708e";
 static const char col_invbord[]     = "#303030";
 static const char col_bord[]        = "#cd0000";
 
@@ -43,7 +43,7 @@ static const Rule rules[] = {
 	{ "Google-chrome",  NULL,       NULL,       	1 << 1,       0,           1 },
 	{ "Microsoft Teams - Preview",  NULL,  NULL,    1 << 1,		  0,		   1 },
     { "zoom",           NULL,       NULL,           1 << 1,       0,           1 },
-	//{ "st-256color",    NULL,		NULL,    		1 << 2,		  0,		   1 },
+	{ "xterm",          NULL,		NULL,    		0,		      1,		   -1 },
 	//{ "Zathura", 		NULL,	    NULL,           1 << 3,		  0,		   1 },
 	{ "Bitwarden", 		NULL,		NULL,       	1 << 4,		  0,		   1 },
     { "Fr.handbrake.ghb",      NULL,       NULL,           1 << 5,       0,           1 },
@@ -88,7 +88,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 
 
 /* commands */
-static const char *termcmd[]  	  = { "dwm_terminal.sh",	NULL };
+static const char *termcmd[]  	  = { "tdrop.sh",	NULL };
 static const char *audioup[] 	  = { "audio_up.sh", 		NULL };
 static const char *audiodown[] 	  = { "audio_down.sh", 		NULL };
 static const char *audiomute[] 	  = { "audio_mute.sh", 		NULL };
