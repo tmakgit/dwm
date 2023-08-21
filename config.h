@@ -8,13 +8,13 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
-static const char col_bg[]          = "#000000";
-static const char col_fg[]          = "#7dfdfe";
-static const char col_selbg[]       = "#7dfdfe";
-static const char col_selfg[]       = "#000000";
-static const char col_invfg[]       = "#000000";
-static const char col_invbg[]       = "#0b708e";
-static const char col_invbord[]     = "#303030";
+static const char col_bg[]          = "#cccccc";
+static const char col_fg[]          = "#000000";
+static const char col_selbg[]       = "#005df7";
+static const char col_selfg[]       = "#ffffff";
+static const char col_invfg[]       = "#ffffff";
+static const char col_invbg[]       = "#6c6c6c";
+static const char col_invbord[]     = "#212121";
 static const char col_bord[]        = "#cd0000";
 
 static const char *colors[][3]      = {
@@ -26,7 +26,6 @@ static const char *colors[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-//static const char *tags[] = { "web", "nx", "term", "pdf", "chat", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -99,17 +98,14 @@ static const char *mpcprev[]	  = { "mpc_prev.sh",		NULL };
 static const char *mpcrand[]	  = { "mpc_rand.sh",		NULL };
 static const char *xbup[]		  = { "xbacklight_inc.sh",	NULL };
 static const char *xbdown[]		  = { "xbacklight_dec.sh",	NULL };
-static const char *click[]		  = { "click.sh",		    NULL };
 static const char *print_screen[] = { "print_screen.sh",    NULL };
 static const char *area_screen[]  = { "area_screen.sh",     NULL };
-static const char *mouse_right[]  = { "mousemove_right.sh", NULL };
-static const char *mouse_left[]  = { "mousemove_left.sh", NULL };
-static const char *stop_mplayer[]  = { "stop_mplayer.sh", NULL };
-static const char *pgupkey[]  = { "pgupkey.sh", NULL };
-static const char *pgdownkey[]  = { "pgdownkey.sh", NULL };
-static const char *homekey[]  = { "homekey.sh", NULL };
-static const char *endkey[]  = { "endkey.sh", NULL };
-static const char *f11key[]  = { "f11key.sh", NULL };
+static const char *stop_mplayer[] = { "stop_mplayer.sh", NULL };
+static const char *pgupkey[]      = { "pgupkey.sh", NULL };
+static const char *pgdownkey[]    = { "pgdownkey.sh", NULL };
+static const char *homekey[]      = { "homekey.sh", NULL };
+static const char *endkey[]       = { "endkey.sh", NULL };
+static const char *f11key[]       = { "f11key.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -161,14 +157,12 @@ static Key keys[] = {
 	{ MODKEY,						XK_u,			spawn,			{.v = mpcrand } },
 	{ 0,	XF86MonBrightnessUp,					spawn,			{.v = xbup } },
 	{ 0, XF86MonBrightnessDown,					spawn,			{.v = xbdown } },
-	{ ControlMask|MODKEY,			XK_i,			spawn,			{.v = click } },
-	{ ControlMask|MODKEY,			XK_u,			spawn,			{.v = mouse_left } },
-	{ ControlMask|MODKEY,			XK_o,			spawn,			{.v = mouse_right } },
 	{ MODKEY,			XK_y,			spawn,			{.v = stop_mplayer } },
 	{ MODKEY|ShiftMask,			XK_h,			spawn,			{.v = homekey } },
 	{ MODKEY|ShiftMask,			XK_l,			spawn,			{.v = endkey } },
 	{ MODKEY|ShiftMask,			XK_k,			spawn,			{.v = pgupkey } },
 	{ MODKEY|ShiftMask,			XK_j,			spawn,			{.v = pgdownkey } },
+	{ MODKEY|ShiftMask,			XK_F10,			spawn,			{.v = f11key } },
 	{ MODKEY|ShiftMask,			XK_F10,			spawn,			{.v = f11key } },
 	{ MODKEY,                       XK_F10,    		togglebar,      {0} },
 };
