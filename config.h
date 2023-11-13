@@ -8,20 +8,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
 
-static const char col_bg[]          = "#cccccc";
-static const char col_fg[]          = "#000000";
-static const char col_selbg[]       = "#005df7";
-static const char col_selfg[]       = "#ffffff";
-static const char col_invfg[]       = "#ffffff";
-static const char col_invbg[]       = "#6c6c6c";
-static const char col_invbord[]     = "#212121";
-static const char col_bord[]        = "#cd0000";
+static const char col_black[]      = "#000000";
+static const char col_white[]      = "#ffffff";
+static const char col_blue[]       = "#005df7";
+static const char col_gray1[]      = "#cccccc";
+static const char col_gray2[]      = "#6c6c6c";
+static const char col_gray3[]      = "#212121";
+static const char col_red[]        = "#cd0000";
 
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
-        [SchemeNorm]  = { col_fg,    col_bg,    col_invbord },
-        [SchemeInv]   = { col_invfg, col_invbg, col_invbord },
-        [SchemeSel]   = { col_selfg, col_selbg, col_bord},
+        [SchemeNorm]  = { col_black,    col_gray1,    col_gray3 },
+        [SchemeInv]   = { col_white, col_gray2, col_gray3 },
+        [SchemeSel]   = { col_white, col_blue, col_red},
 };
 
 /* tagging */
@@ -35,15 +34,16 @@ static const Rule rules[] = {
 	/* class      		instance    title       	tags mask     isfloating   monitor */
     // mon0
 	//{ "Firefox-esr",    NULL,       NULL,       	1 << 0,       0,           0 },
-	{ "Nxplayer.bin",   NULL,       NULL,           1 << 3,       0,           0 },
+	{ "Nxplayer.bin",   NULL,       NULL,           1 << 2,       0,           0 },
     //{ "libreoffice",    NULL,       NULL,           1 << 3,       0,           0 },
 
     //mon1
 	{ "Google-chrome",  NULL,       NULL,       	1 << 1,       0,           1 },
 	{ "Microsoft Teams - Preview",  NULL,  NULL,    1 << 1,		  0,		   1 },
-    { "zoom",           NULL,       NULL,           1 << 1,       0,           1 },
+    { "zoom",           NULL,       NULL,           1 << 2,       0,           1 },
 	{ "xterm",          NULL,		NULL,    		0,		      1,		   -1 },
-	//{ "Zathura", 		NULL,	    NULL,           1 << 3,		  0,		   1 },
+	{ "Zathura", 		NULL,	    NULL,           1 << 3,		  0,		   1 },
+    { "feh",            NULL,       NULL,           1 << 3,       0,           1 },
 	{ "Bitwarden", 		NULL,		NULL,       	1 << 4,		  0,		   1 },
     { "Fr.handbrake.ghb",      NULL,       NULL,           1 << 5,       0,           1 },
 	{ "Signal", 		NULL,	    NULL,           1 << 7,		  0,		   1 },
@@ -83,7 +83,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_selbg, "-sf", col_selfg, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_black, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
 
 
 /* commands */
