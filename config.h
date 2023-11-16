@@ -46,6 +46,7 @@ static const Rule rules[] = {
     { "feh",            NULL,       NULL,           1 << 3,       0,           1 },
 	{ "Bitwarden", 		NULL,		NULL,       	1 << 4,		  0,		   1 },
     { "Fr.handbrake.ghb",      NULL,       NULL,           1 << 5,       0,           1 },
+    { "YouTube Music",      NULL,       NULL,           1 << 6,       0,           1 },
 	{ "Signal", 		NULL,	    NULL,           1 << 7,		  0,		   1 },
 	{ "Steam", 		    NULL,		NULL,       	1 << 8,		  0,		   1 },
 	{ "steam", 		    NULL,		NULL,       	1 << 8,		  0,		   1 },
