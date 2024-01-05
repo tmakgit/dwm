@@ -5,8 +5,8 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Fira Code:size=11:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Fira Code:size=11:antialias=true:autohint=true";
+static const char *fonts[]          = { "Fira Code:size=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Fira Code:size=12:antialias=true:autohint=true";
 
 static const char col_black[]      = "#000000";
 static const char col_white[]      = "#FFFEFE";
@@ -100,7 +100,6 @@ static const char *mpcprev[]	  = { "mpc_prev.sh",		NULL };
 static const char *mpcrand[]	  = { "mpc_rand.sh",		NULL };
 static const char *print_screen[] = { "print_screen.sh",    NULL };
 static const char *area_screen[]  = { "area_screen.sh",     NULL };
-static const char *stop_mplayer[] = { "stop_mplayer.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -150,7 +149,6 @@ static Key keys[] = {
 	{ MODKEY,						XK_n,			spawn,			{.v = mpcnext } },
 	{ MODKEY,						XK_b,			spawn,			{.v = mpcprev } },
 	{ MODKEY,						XK_u,			spawn,			{.v = mpcrand } },
-	{ MODKEY,			            XK_y,			spawn,			{.v = stop_mplayer } },
 };
 
 /* button definitions */
