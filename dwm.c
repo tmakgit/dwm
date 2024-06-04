@@ -1449,20 +1449,32 @@ scan(void)
 	}
 }
 
+
+// I updated sendmon following this patch to have focus move with the window:
+// https://github.com/bakkeby/patches/blob/master/dwm/dwm-sendmon_keepfocus-6.2.diff
 void
 sendmon(Client *c, Monitor *m)
 {
 	if (c->mon == m)
 		return;
+    int hadfocus = (c == selmon->sel);
 	unfocus(c, 1);
 	detach(c);
 	detachstack(c);
+    arrange(c->mon);
 	c->mon = m;
 	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
 	attachbottom(c);
 	attachstack(c);
-	focus(NULL);
-	arrange(NULL);
+	//focus(NULL);
+	//arrange(NULL);
+	arrange(m);
+    if (hadfocus) {
+        focus(c);
+        restack(m);
+    } else
+            focus(NULL);
+    
 }
 
 void
