@@ -41,7 +41,7 @@ static const Rule rules[] = {
 	{ "Bitwarden", 		NULL,	 NULL,       	1 << 4,     0,    0 },
 	{ "1Password", 		NULL,	 NULL,       	1 << 4,     0,    0 },
 	{ "Nxplayer.bin",   NULL,    NULL,          1 << 5,     0,    0 },
-	{ "firefox",        NULL,    NULL,       	1 << 6,     0,    0 },
+	{ "firefox",        NULL,    NULL,       	0,          0,    0 },
 	{ "Signal", 		NULL,	 NULL,          1 << 7,     0,    0 },
     { NULL,             NULL,    "HandBrake",   1 << 8,     0,    0 },
 	{ "Zathura", 		NULL,	 NULL,          1 << 8,     0,    0 },
