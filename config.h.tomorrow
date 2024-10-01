@@ -18,12 +18,21 @@ static const char col_gray2[]      = "#6C6C6C";
 static const char col_gray3[]      = "#212121";
 static const char col_red[]        = "#C82828";
 
+// LIGHT
 static const char *colors[][3]      = {
         /*               fg          bg         border   */
-        [SchemeNorm]  = { col_gray1, col_black, col_gray3 },
-        [SchemeInv]   = { col_black, col_gray2, col_gray3 },
+        [SchemeNorm]  = { col_black, col_white, col_gray3 },
+        [SchemeInv]   = { col_white, col_gray2, col_gray3 },
         [SchemeSel]   = { col_white, col_blue,  col_red},
 };
+// DARK
+//static const char *colors[][3]      = {
+//        /*               fg          bg         border   */
+//        [SchemeNorm]  = { col_gray1, col_black, col_gray3 },
+//        [SchemeInv]   = { col_black, col_gray2, col_gray3 },
+//        [SchemeSel]   = { col_white, col_blue,  col_red},
+//};
+
 
 /* tagging */
 static const char *tags[] = {"1","2","3","4","5","6","7","8","9","0"};
@@ -87,8 +96,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", 
-    dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", 
-    col_black, "-p", dmenuprompt, NULL };
+    dmenufont, "-nb", col_white, "-nf", col_black, "-sb", col_blue, "-sf", 
+    col_white, "-p", dmenuprompt, NULL };
 
 
 /* commands */
