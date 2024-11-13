@@ -1,1 +1,1 @@
-config.h.tomorrow
+config.h.ubuntu
