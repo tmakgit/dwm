@@ -105,6 +105,7 @@ static const char *mpcprev[]	  = { "mpc_prev.sh",		NULL };
 static const char *mpcrand[]	  = { "mpc_rand.sh",		NULL };
 static const char *print_screen[] = { "print_screen.sh",    NULL };
 static const char *area_screen[]  = { "area_screen.sh",     NULL };
+static const char *clipmenu[]  = { "clipmenu_dwm.sh",     NULL };
 
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
@@ -158,6 +159,7 @@ static Key keys[] = {
 	{ MODKEY,						XK_n,			spawn,			{.v = mpcnext } },
 	{ MODKEY,						XK_b,			spawn,			{.v = mpcprev } },
 	{ MODKEY,						XK_u,			spawn,			{.v = mpcrand } },
+	{ MODKEY|ShiftMask,             XK_p,  		    spawn,		   	{.v = clipmenu } },
 };
 
 /* button definitions */
