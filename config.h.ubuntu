@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      		instance title       	tagsMask  float  monitor */
-	{ "xterm-16color",  NULL,	 NULL,    		1 << 2,	    0,    -1 },
+	{ "xterm-16color",  NULL,	 NULL,    		0,	        1,    -1 },
 	{ "Microsoft-edge", NULL,    NULL,          1 << 3,     0,    -1 },
 	{ "Slack",          NULL,    NULL,          1 << 3,     0,    -1 },
     { "zoom",           NULL,    NULL,          1 << 3,     0,    -1 },
@@ -110,8 +110,8 @@ static const char *clipmenu[]  = { "clipmenu_dwm.sh",     NULL };
 static Key keys[] = {
 	/* modifier                     key        		function        argument */
 	{ MODKEY,                       XK_p,      		spawn,          {.v = dmenucmd } },
-	//{ MODKEY|ShiftMask,             XK_Return, 		spawn,           {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, 		view,           {.ui = 1 << 2 } },
+	{ MODKEY|ShiftMask,             XK_Return, 		spawn,           {.v = termcmd } },
+	//{ MODKEY|ShiftMask,             XK_Return, 		view,           {.ui = 1 << 2 } },
 	{ MODKEY,                       XK_F11,    		togglebar,      {0} },
 	{ MODKEY,                       XK_j,      		focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      		focusstack,     {.i = -1 } },
