@@ -14,7 +14,7 @@ static const char col_black[]      = "black";
 static const char col_white[]      = "gray90";
 static const char col_gray[]       = "gray50";
 static const char col_blue[]       = "#4171ae";
-static const char col_border[]     = "#eab700";
+static const char col_border[]     = "#c82828";
 
 // DARK
 static const char *colors[][3]      = {
