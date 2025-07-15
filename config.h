@@ -1,1 +1,1 @@
-config.h.desk
+config.tm1.h
