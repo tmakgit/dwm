@@ -10,18 +10,21 @@ static const char *fonts[]          =
 static const char dmenufont[]       = 
     "Fira Code:size=12:antialias=true:autohint=true";
 
-static const char col_black[]      = "black";
-static const char col_white[]      = "gray90";
-static const char col_gray[]       = "gray50";
-static const char col_blue[]       = "#4171ae";
-static const char col_border[]     = "#c82828";
+static const char col_black[]      	= "black";
+static const char col_background[] 	= "#00004d";
+static const char col_red[]      	= "#FF3030";
+static const char col_cyan[]      	= "#00D7D7";
+static const char col_white[]      	= "gray90";
+static const char col_gray[]       	= "gray30";
+static const char col_blue[]       	= "#4171ae";
+static const char col_yellow[] 		= "#FFD700";
 
 // DARK
 static const char *colors[][3]      = {
-        /*               fg          bg         border   */
-        [SchemeNorm]  = { col_white, col_black, col_gray},
-        [SchemeInv]   = { col_white, col_black,  col_black},
-        [SchemeSel]   = { col_white, col_blue,  col_border},
+        /*               fg          		bg		border   */
+        [SchemeNorm]  = { col_yellow, 		col_background,	col_gray},
+        [SchemeInv]  = 	{ col_gray, 		col_black,	col_gray},
+        [SchemeSel]   = { col_cyan,		col_gray,	col_red},
 };
 
 
@@ -33,23 +36,23 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      		instance title       	tagsMask  float  monitor */
-	{ "xterm-16color",  NULL,	 NULL,    		0,	        0,    -1 },
-	{ "Microsoft-edge", NULL,    NULL,          1 << 3,     0,    -1 },
-	{ "Slack",          NULL,    NULL,          1 << 3,     0,    -1 },
-    { "zoom",           NULL,    NULL,          1 << 3,     0,    -1 },
-	{ "Bitwarden", 		NULL,	 NULL,       	1 << 4,     0,    -1 },
-	{ "1Password", 		NULL,	 NULL,       	1 << 4,     0,    -1 },
-	{ "Nxplayer.bin",   NULL,    NULL,          1 << 5,     0,    -1 },
-	{ "firefox",        NULL,    NULL,       	0,          0,    -1 },
-	{ "Signal", 		NULL,	 NULL,          1 << 7,     0,    -1 },
-    { NULL,             NULL,    "HandBrake",   1 << 8,     0,    -1 },
-	{ "Zathura", 		NULL,	 NULL,          1 << 8,     0,    -1 },
-    { "feh",            NULL,    NULL,          1 << 8,     0,    -1 },
-    { "libreoffice",    NULL,    NULL,          1 << 8,     0,    -1 },
-    { NULL,             NULL,    "LibreOffice", 1 << 8,     0,    -1 },
-	{ "Steam", 		    NULL,	 NULL,       	1 << 9,     0,    -1 },
-	{ "steam", 		    NULL,	 NULL,       	1 << 9,     0,    -1 },
+	/* class		instance title       	tagsMask  	float  	monitor */
+	{ "xterm-16color",  	NULL,	 NULL,    	0,		0,	-1 },
+	{ "Microsoft-edge", 	NULL,    NULL,          1 << 3,		0,	-1 },
+	{ "Slack",          	NULL,    NULL,          1 << 3,		0,	-1 },
+	{ "zoom",           	NULL,    NULL,          1 << 3,		0,	-1 },
+	{ "Bitwarden", 		NULL,	 NULL,       	1 << 4,		0,	-1 },
+	{ "1Password", 		NULL,	 NULL,       	1 << 4,		0,	-1 },
+	{ "Nxplayer.bin",   	NULL,    NULL,          1 << 5,		0,	-1 },
+	{ "firefox",        	NULL,    NULL,       	0,		0,	-1 },
+	{ "Signal", 		NULL,	 NULL,          1 << 7,		0,	-1 },
+	{ NULL,             	NULL,    "HandBrake",   1 << 8,		0,	-1 },
+	{ "Zathura", 		NULL,	 NULL,          1 << 8,		0,	-1 },
+	{ "feh",            	NULL,    NULL,          1 << 8,		0,	-1 },
+	{ "libreoffice",    	NULL,    NULL,          1 << 8,		0,	-1 },
+	{ NULL,             	NULL,    "LibreOffice", 1 << 8,		0,	-1 },
+	{ "Steam", 	    	NULL,	 NULL,       	1 << 9,		0,	-1 },
+	{ "steam", 	    	NULL,	 NULL,       	1 << 9,		0,	-1 },
 };
 
 /* layout(s) */
@@ -86,7 +89,7 @@ static const Layout layouts[] = {
 /* dmenu */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char dmenuprompt[] = ">";
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_blue, "-sf", col_white, "-p", dmenuprompt, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_background, "-nf", col_yellow, "-sb", col_gray, "-sf", col_cyan, "-p", dmenuprompt, NULL };
 
 
 /* commands */
@@ -158,7 +161,8 @@ static Key keys[] = {
 	{ MODKEY,						XK_n,			spawn,			{.v = mpcnext } },
 	{ MODKEY,						XK_b,			spawn,			{.v = mpcprev } },
 	{ MODKEY,						XK_u,			spawn,			{.v = mpcrand } },
-	{ MODKEY|ShiftMask,             XK_p,  		    spawn,		   	{.v = clipmenu } },
+	{ MODKEY|ShiftMask,             XK_p,               	spawn,		{.v = clipmenu } },
+
 };
 
 /* button definitions */
