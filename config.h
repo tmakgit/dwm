@@ -76,7 +76,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_neutral, "-nf", col_fontInv, "-sb", col_sel, "-sf", col_fontSel, "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
-static const char *firefox[]		= { "firefox",		NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
 static const char *audiodown[]		= { "audio_down.sh",	NULL };
 static const char *audiomute[]		= { "audio_mute.sh",	NULL };
@@ -96,7 +95,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_F11,		togglebar,	{0} },
 	{ MODKEY,		XK_j,		focusstack,	{.i = +1 } },
 	{ MODKEY,		XK_k,		focusstack,	{.i = -1 } },
-	{ MODKEY|ShiftMask,	XK_d,		incnmaster,	{.i = +1 } },
+	{ MODKEY,		XK_i,		incnmaster,	{.i = +1 } },
 	{ MODKEY,		XK_d,		incnmaster,	{.i = -1 } },
 	{ MODKEY,		XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY,		XK_l,		setmfact,	{.f = +0.05} },
@@ -124,7 +123,6 @@ static const Key keys[] = {
 	TAGKEYS(		XK_9,				8)
     	TAGKEYS(		XK_0,				9)
 	{ MODKEY|ShiftMask,	XK_z,		quit,		{0} },
-	{ MODKEY,		XK_i,		spawn,		{.v = firefox } },
 	{ MODKEY,		XK_equal,	spawn,		{.v = audioup } },
 	{ MODKEY,		XK_minus,	spawn,		{.v = audiodown } },
 	{ MODKEY,		XK_backslash,	spawn,		{.v = audiomute } },
