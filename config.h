@@ -88,6 +88,7 @@ static const char *print_screen[]	= { "print_screen.sh",	NULL };
 static const char *area_screen[]	= { "area_screen.sh",	NULL };
 static const char *clipmenu[]		= { "clipmenu_dwm.sh",	NULL };
 
+#include "movestack.c"
 static const Key keys[] = {
 	/* modifier		key		function	argument */
 	{ MODKEY,		XK_p,		spawn,		{.v = dmenucmd } },
@@ -99,6 +100,8 @@ static const Key keys[] = {
 	{ MODKEY,		XK_d,		incnmaster,	{.i = -1 } },
 	{ MODKEY,		XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY,		XK_l,		setmfact,	{.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,		XK_Return, 	zoom,		{0} },
 	{ MODKEY,		XK_Tab,		view,		{0} },
 	{ MODKEY|ShiftMask,	XK_c,		killclient,	{0} },
