@@ -9,16 +9,17 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=12:antialias=true:autohint=true";
 
-static const char col_fontSel[]		= "white";
-static const char col_fontInv[]		= "black";
-static const char col_neutral[]		= "grey90";
-static const char col_sel[]		= "blue3";
-static const char col_border[]		= "red3";
+static const char col_fontSel[]		= "grey90";
+static const char col_fontInv[]		= "grey90";
+static const char col_neutral[]		= "grey11";
+static const char col_sel[]			= "steelblue";
+static const char col_borderSel[]	= "red3";
+static const char col_border[]		= "grey45";
 
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fontInv, col_neutral, col_neutral },
-	[SchemeSel]  = { col_fontSel, col_sel,  col_border },
+	[SchemeNorm] = { col_fontInv, col_neutral, col_border},
+	[SchemeSel]  = { col_fontSel, col_sel,  col_borderSel },
 };
 
 /* tagging */
