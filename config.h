@@ -9,17 +9,19 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fira Code:size=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Fira Code:size=12:antialias=true:autohint=true";
 
-static const char col_fontSel[]		= "grey90";
-static const char col_fontInv[]		= "grey90";
-static const char col_neutral[]		= "grey11";
-static const char col_sel[]			= "steelblue";
-static const char col_borderSel[]	= "red3";
-static const char col_border[]		= "grey45";
+/* dwm colors (Monokai-style) */
+static const char col_fg[]         = "#F8F8F2"; /* foreground */
+static const char col_bg[]         = "#1B1D1E"; /* background */
+static const char col_border[]     = "#505354"; /* muted gray border */
 
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fontInv, col_neutral, col_border},
-	[SchemeSel]  = { col_fontSel, col_sel,  col_borderSel },
+static const char col_fg_sel[]     = "#F8F8F2"; /* selected foreground */
+static const char col_bg_sel[]     = "#505354"; /* selected background */
+static const char col_border_sel[] = "#FF5995"; /* accent border (blue/cyan) */
+
+static const char *colors[][3] = {
+    /*               fg         bg         border */
+    [SchemeNorm] = { col_fg,    col_bg,    col_border },
+    [SchemeSel]  = { col_fg_sel,col_bg_sel,col_border_sel },
 };
 
 /* tagging */
@@ -75,7 +77,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_neutral, "-nf", col_fontInv, "-sb", col_sel, "-sf", col_fontSel, "-p", "dmenu>", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
+    "-nb", col_bg, "-nf", col_fg, "-sb", col_bg_sel, "-sf", col_fg_sel,
+    "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
 static const char *audiodown[]		= { "audio_down.sh",	NULL };
@@ -87,7 +91,16 @@ static const char *mpcprev[]		= { "mpc_prev.sh",	NULL };
 static const char *mpcrand[]		= { "mpc_rand.sh",	NULL };
 static const char *print_screen[]	= { "print_screen.sh",	NULL };
 static const char *area_screen[]	= { "area_screen.sh",	NULL };
-static const char *clipmenu[]		= { "clipmenu_dwm.sh",	NULL };
+static const char *clipmenucmd[] = {
+    "clipmenu", "-i",
+    "-fn", dmenufont,
+    "-p",  "clipmenu>",
+    "-nb", col_bg,
+    "-nf", col_fg,
+    "-sb", col_bg_sel,
+    "-sf", col_fg,   /* same as normal */
+    NULL
+};
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -139,7 +152,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_n,		spawn,		{.v = mpcnext } },
 	{ MODKEY,		XK_b,		spawn,		{.v = mpcprev } },
 	{ MODKEY,		XK_u,		spawn,		{.v = mpcrand } },
-	{ MODKEY|ShiftMask,	XK_p,		spawn,		{.v = clipmenu } },
+	{ MODKEY|ShiftMask,	XK_p,		spawn,		{.v = clipmenucmd } },
 };
 
 /* button definitions */
