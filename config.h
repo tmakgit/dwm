@@ -6,17 +6,17 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "Fira Code:size=12:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Fira Code:size=12:antialias=true:autohint=true";
+static const char *fonts[]          = { "Roboto Mono:size=13:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Roboto Mono:size=13:antialias=true:autohint=true";
 
 /* dwm colors (Monokai-style) */
-static const char col_fg[]         = "#F8F8F2"; /* foreground */
-static const char col_bg[]         = "#1B1D1E"; /* background */
-static const char col_border[]     = "#505354"; /* muted gray border */
+static const char col_fg[]         = "grey90"; /* foreground */
+static const char col_bg[]         = "black"; /* background */
+static const char col_border[]     = "grey10"; /* muted gray border */
 
-static const char col_fg_sel[]     = "#F8F8F2"; /* selected foreground */
-static const char col_bg_sel[]     = "#505354"; /* selected background */
-static const char col_border_sel[] = "#FF5995"; /* accent border (blue/cyan) */
+static const char col_fg_sel[]     = "grey90"; /* selected foreground */
+static const char col_bg_sel[]     = "grey30"; /* selected background */
+static const char col_border_sel[] = "steelblue"; /* accent border (blue/cyan) */
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
