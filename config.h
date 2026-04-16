@@ -6,16 +6,16 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "Roboto Mono:size=12:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Roboto Mono:size=12:antialias=true:autohint=true";
+static const char *fonts[]          = { "IBM Plex Mono:size=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "IBM Plex Mono:size=14:antialias=true:autohint=true";
 
 /* dwm colors (Monokai-style) */
 static const char col_fg[]         = "grey90"; /* foreground */
 static const char col_bg[]         = "black"; /* background */
 static const char col_border[]     = "grey10"; /* muted gray border */
 
-static const char col_fg_sel[]     = "black"; /* selected foreground */
-static const char col_bg_sel[]     = "grey50"; /* selected background */
+static const char col_fg_sel[]     = "grey90"; /* selected foreground */
+static const char col_bg_sel[]     = "grey40"; /* selected background */
 static const char col_border_sel[] = "steelblue"; /* accent border (blue/cyan) */
 
 static const char *colors[][3] = {
@@ -98,7 +98,7 @@ static const char *clipmenucmd[] = {
     "-nb", col_bg,
     "-nf", col_fg,
     "-sb", col_bg_sel,
-    "-sf", col_fg,   /* same as normal */
+    "-sf", col_fg_sel,   /* same as normal */
     NULL
 };
 static const char *firefox[] = {
