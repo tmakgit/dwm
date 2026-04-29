@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -9,14 +9,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "JetBrains Mono:size=14:antialias=true:autohint=true";
 
-/* dwm colors (Monokai-style) */
-static const char col_fg[]         = "grey90"; /* foreground */
-static const char col_bg[]         = "black"; /* background */
-static const char col_border[]     = "grey10"; /* muted gray border */
+static const char col_fg[]         = "black"; /* foreground */
+static const char col_bg[]         = "grey85"; /* background */
+static const char col_border[]     = "grey70"; /* border */
 
-static const char col_fg_sel[]     = "grey90"; /* selected foreground */
-static const char col_bg_sel[]     = "grey40"; /* selected background */
-static const char col_border_sel[] = "steelblue"; /* accent border (blue/cyan) */
+static const char col_fg_sel[]     = "grey85"; /* selected foreground */
+static const char col_bg_sel[]     = "deepskyblue4"; /* selected background */
+static const char col_menu_sel[]   = "darkgreen"; /* dmenu and clipmenu selection*/
+static const char col_border_sel[] = "darkred"; /* accent border */
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
@@ -34,20 +34,22 @@ static const Rule rules[] = {
 	 */
 	/* class		instance	title		tags mask	isfloating	monitor */
 	{ "xterm-16color",	NULL,		NULL,		0,		0,		-1 },
-	{ "teams-for-linux",	NULL,		NULL,		1 << 3,		0,		-1 },
-	{ "Slack",		NULL,		NULL,		1 << 3,		0,		-1 },
-	{ "zoom",		NULL,		NULL,		1 << 3,		0,		-1 },
+	{ "st",				NULL,		NULL,		0,		0,		-1 },
+	{ "tmux",			NULL,		NULL,		0,		0,		-1 },
+	{ "teams-for-linux",NULL,		NULL,		1 << 3,		0,		-1 },
+	{ "Slack",			NULL,		NULL,		1 << 3,		0,		-1 },
+	{ "zoom",			NULL,		NULL,		1 << 3,		0,		-1 },
 	{ "Bitwarden",		NULL,		NULL,		1 << 4,		0,		-1 },
 	{ "1Password",		NULL,		NULL,		1 << 4,		0,		-1 },
 	{ "Nxplayer.bin",	NULL,		NULL,		1 << 5,		0,		-1 },
 	{ "firefox",		NULL,		NULL,		0,		0,		-1 },
-	{ "Signal",		NULL,		NULL,		1 << 7,		0,		-1 },
+	{ "Signal",			NULL,		NULL,		1 << 7,		0,		-1 },
 	{ "Zathura",		NULL,		NULL,		0,		0,		-1 },
 	{ "libreoffice",	NULL,		NULL,		1 << 8,		0,		-1 },
-	{ "Steam",		NULL,		NULL,		1 << 9,		0,		-1 },
-	{ "steam",		NULL,		NULL,		1 << 9,		0,		-1 },
-	{ NULL,			NULL,		"HandBrake",	1 << 8,		0,		-1 },
-	{ NULL,			NULL,		"LibreOffice", 	0,		0,		-1 },
+	{ "Steam",			NULL,		NULL,		1 << 9,		0,		-1 },
+	{ "steam",			NULL,		NULL,		1 << 9,		0,		-1 },
+	{ NULL,				NULL,		"HandBrake",	1 << 8,		0,		-1 },
+	{ NULL,				NULL,		"LibreOffice", 	0,		0,		-1 },
 };
 
 /* layout(s) */
@@ -78,7 +80,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-    "-nb", col_bg, "-nf", col_fg, "-sb", col_bg_sel, "-sf", col_fg_sel,
+    "-nb", col_border, "-nf", col_fg, "-sb", col_menu_sel, "-sf", col_fg_sel,
     "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
@@ -95,10 +97,10 @@ static const char *clipmenucmd[] = {
     "clipmenu", "-i",
     "-fn", dmenufont,
     "-p",  "clipmenu>",
-    "-nb", col_bg,
+    "-nb", col_border,
     "-nf", col_fg,
-    "-sb", col_bg_sel,
-    "-sf", col_fg_sel,   /* same as normal */
+    "-sb", col_menu_sel,
+    "-sf", col_fg_sel,
     NULL
 };
 
@@ -107,6 +109,7 @@ static const Key keys[] = {
 	/* modifier		key		function	argument */
 	{ MODKEY,		XK_p,		spawn,		{.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	XK_Return,	spawn,		{.v = termcmd } },
+	//{ MODKEY|ShiftMask,	XK_Return,	view,		{.ui = 1 << 2} },
 	{ MODKEY,		XK_F11,		togglebar,	{0} },
 	{ MODKEY,		XK_j,		focusstack,	{.i = +1 } },
 	{ MODKEY,		XK_k,		focusstack,	{.i = -1 } },
