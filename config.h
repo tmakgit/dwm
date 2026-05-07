@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 4;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -9,14 +9,15 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "JetBrains Mono:size=14:antialias=true:autohint=true";
 
-static const char col_fg[]         = "black"; /* foreground */
-static const char col_bg[]         = "grey85"; /* background */
-static const char col_border[]     = "grey70"; /* border */
+static const char col_fg[]         = "#E6E6E6"; /* foreground */
+static const char col_bg[]         = "#131313"; /* background */
+static const char col_border[]     = "#444444"; /* border */
 
-static const char col_fg_sel[]     = "grey85"; /* selected foreground */
-static const char col_bg_sel[]     = "deepskyblue4"; /* selected background */
-static const char col_menu_sel[]   = "darkgreen"; /* dmenu and clipmenu selection*/
-static const char col_border_sel[] = "darkred"; /* accent border */
+static const char col_fg_sel[]     = "#E6E6E6"; /* selected foreground */
+static const char col_bg_sel[]     = "#405BBF"; /* selected background */
+static const char col_border_sel[] = "#B4B4B4"; /* accent border */
+static const char col_fg_menu[]    = "#131313"; /* dmenu and clipmenu selection*/
+static const char col_bg_menu[]    = "#BFA440"; /* dmenu and clipmenu selection*/
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
@@ -80,7 +81,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-    "-nb", col_border, "-nf", col_fg, "-sb", col_menu_sel, "-sf", col_fg_sel,
+    "-nb", col_border, "-nf", col_fg, "-sb", col_bg_menu, "-sf", col_fg_menu,
     "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
@@ -99,8 +100,8 @@ static const char *clipmenucmd[] = {
     "-p",  "clipmenu>",
     "-nb", col_border,
     "-nf", col_fg,
-    "-sb", col_menu_sel,
-    "-sf", col_fg_sel,
+    "-sb", col_bg_menu,
+    "-sf", col_fg_menu,
     NULL
 };
 
