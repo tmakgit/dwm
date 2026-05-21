@@ -9,9 +9,9 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "JetBrains Mono:size=14:antialias=true:autohint=true";
 
-static const char col_fg[]         = "grey90"; /* foreground */
-static const char col_bg[]         = "black"; /* background */
-static const char col_border[]     = "grey20"; /* border */
+static const char col_fg[]         = "black"; /* foreground */
+static const char col_bg[]         = "grey90"; /* background */
+static const char col_border[]     = "grey60"; /* border */
 
 static const char col_fg_sel[]     = "black"; /* selected foreground */
 static const char col_bg_sel[]     = "steelblue"; /* selected background */
@@ -46,7 +46,6 @@ static const Rule rules[] = {
 	{ "firefox",		NULL,		NULL,		0,		0,		-1 },
 	{ "Signal",			NULL,		NULL,		1 << 7,		0,		-1 },
 	{ "Zathura",		NULL,		NULL,		0,		0,		-1 },
-	{ "libreoffice",	NULL,		NULL,		1 << 8,		0,		-1 },
 	{ "Steam",			NULL,		NULL,		1 << 9,		0,		-1 },
 	{ "steam",			NULL,		NULL,		1 << 9,		0,		-1 },
 	{ NULL,				NULL,		"HandBrake",	1 << 8,		0,		-1 },
