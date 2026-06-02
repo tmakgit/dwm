@@ -11,7 +11,7 @@ static const char dmenufont[]       = "JetBrains Mono:size=14:antialias=true:aut
 
 static const char col_fg[]         = "black"; /* foreground */
 static const char col_bg[]         = "grey90"; /* background */
-static const char col_border[]     = "grey60"; /* border */
+static const char col_border[]     = "grey70"; /* border */
 
 static const char col_fg_sel[]     = "black"; /* selected foreground */
 static const char col_bg_sel[]     = "steelblue3"; /* selected background */
