@@ -14,8 +14,8 @@ static const char col_bg[]         = "grey90"; /* background */
 static const char col_border[]     = "grey60"; /* border */
 
 static const char col_fg_sel[]     = "black"; /* selected foreground */
-static const char col_bg_sel[]     = "steelblue"; /* selected background */
-static const char col_border_sel[] = "red3"; /* accent border */
+static const char col_bg_sel[]     = "steelblue3"; /* selected background */
+static const char col_border_sel[] = "brown2"; /* accent border */
 static const char col_fg_menu[]    = "black"; /* dmenu and clipmenu selection*/
 static const char col_bg_menu[]    = "green3"; /* dmenu and clipmenu selection*/
 
