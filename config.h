@@ -44,7 +44,7 @@ static const Rule rules[] = {
 	{ "1Password",		NULL,		NULL,		1 << 4,		0,		-1 },
 	{ "Nxplayer.bin",	NULL,		NULL,		1 << 5,		0,		-1 },
 	{ "firefox",		NULL,		NULL,		0,		0,		-1 },
-	{ "Signal",			NULL,		NULL,		1 << 7,		0,		-1 },
+	{ "signal",			NULL,		NULL,		1 << 7,		0,		-1 },
 	{ "Zathura",		NULL,		NULL,		0,		0,		-1 },
 	{ "Steam",			NULL,		NULL,		1 << 9,		0,		-1 },
 	{ "steam",			NULL,		NULL,		1 << 9,		0,		-1 },
@@ -93,6 +93,7 @@ static const char *mpcprev[]		= { "mpc_prev.sh",	NULL };
 static const char *mpcrand[]		= { "mpc_rand.sh",	NULL };
 static const char *print_screen[]	= { "print_screen.sh",	NULL };
 static const char *area_screen[]	= { "area_screen.sh",	NULL };
+static const char *move_mouse[]		= { "mouse_top_right.sh", NULL };
 static const char *clipmenucmd[] = {
     "clipmenu", "-i",
     "-fn", dmenufont,
@@ -156,6 +157,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_b,		spawn,		{.v = mpcprev } },
 	{ MODKEY,		XK_u,		spawn,		{.v = mpcrand } },
 	{ MODKEY|ShiftMask,	XK_p,		spawn,		{.v = clipmenucmd } },
+	{ MODKEY|ShiftMask,	XK_h,		spawn,		{.v = move_mouse } },
 };
 
 /* button definitions */
