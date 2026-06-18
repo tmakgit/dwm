@@ -16,8 +16,8 @@ static const char col_border[]     = "grey70"; /* border */
 static const char col_fg_sel[]     = "black"; /* selected foreground */
 static const char col_bg_sel[]     = "steelblue3"; /* selected background */
 static const char col_border_sel[] = "brown2"; /* accent border */
-static const char col_fg_menu[]    = "black"; /* dmenu and clipmenu selection*/
-static const char col_bg_menu[]    = "green3"; /* dmenu and clipmenu selection*/
+static const char col_menu[]       = "grey90"; /* dmenu and clipmenu selection*/
+static const char col_menu_sel[]   = "green3"; /* dmenu and clipmenu selection*/
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
@@ -80,7 +80,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-    "-nb", col_border, "-nf", col_fg, "-sb", col_bg_menu, "-sf", col_fg_menu,
+    "-nb", col_menu, "-nf", col_fg, "-sb", col_menu_sel, "-sf", col_fg,
     "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
@@ -98,10 +98,10 @@ static const char *clipmenucmd[] = {
     "clipmenu", "-i",
     "-fn", dmenufont,
     "-p",  "clipmenu>",
-    "-nb", col_border,
+    "-nb", col_menu,
     "-nf", col_fg,
-    "-sb", col_bg_menu,
-    "-sf", col_fg_menu,
+    "-sb", col_menu_sel,
+    "-sf", col_fg,
     NULL
 };
 
