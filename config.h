@@ -13,18 +13,18 @@ static const char col_fg[]         = "grey90"; /* foreground */
 static const char col_bg[]         = "black"; /* background */
 static const char col_border[]     = "grey40"; /* border */
 
-static const char col_fg_sel[]     = "black"; /* selected foreground */
-static const char col_bg_sel[]     = "steelblue3"; /* selected background */
-static const char col_border_sel[] = "brown2"; /* accent border */
-static const char col_hide_bg[]    = "tan3"; /* dmenu and clipmenu selection*/
-static const char col_menu[]       = "black"; /* dmenu and clipmenu selection*/
-static const char col_menu_sel[]   = "green3"; /* dmenu and clipmenu selection*/
+static const char col_fg_sel[]     	= "black"; /* selected foreground */
+static const char col_bg_sel[]     	= "steelblue3"; /* selected background */
+static const char col_border_sel[] 	= "brown2"; /* accent border */
+static const char col_hide[]    	= "tan3"; /* dmenu and clipmenu selection*/
+static const char col_menu[]       	= "black"; /* dmenu and clipmenu selection*/
+static const char col_menu_sel[]   	= "green3"; /* dmenu and clipmenu selection*/
 
 static const char *colors[][3] = {
-    /*               fg         bg         border */
-    [SchemeNorm] = { col_fg,    col_bg,    col_border },
-    [SchemeSel]  = { col_fg_sel,col_bg_sel,col_border_sel },
-    [SchemeHid]  = { col_fg_sel,col_hide_bg,col_border_sel },
+    /*               fg         	bg         	border */
+    [SchemeNorm] = { col_fg,    	col_bg,    	col_border },
+    [SchemeSel]  = { col_fg_sel,	col_bg_sel,	col_border_sel },
+    [SchemeHid]  = { col_hide,		col_bg,		col_hide },
 };
 
 /* tagging */
