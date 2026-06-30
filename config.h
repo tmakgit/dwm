@@ -9,20 +9,22 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrains Mono:size=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "JetBrains Mono:size=14:antialias=true:autohint=true";
 
-static const char col_fg[]         = "black"; /* foreground */
-static const char col_bg[]         = "grey90"; /* background */
-static const char col_border[]     = "grey70"; /* border */
+static const char col_fg[]         = "grey90"; /* foreground */
+static const char col_bg[]         = "black"; /* background */
+static const char col_border[]     = "grey40"; /* border */
 
 static const char col_fg_sel[]     = "black"; /* selected foreground */
 static const char col_bg_sel[]     = "steelblue3"; /* selected background */
 static const char col_border_sel[] = "brown2"; /* accent border */
-static const char col_menu[]       = "grey90"; /* dmenu and clipmenu selection*/
+static const char col_hide_bg[]    = "tan3"; /* dmenu and clipmenu selection*/
+static const char col_menu[]       = "black"; /* dmenu and clipmenu selection*/
 static const char col_menu_sel[]   = "green3"; /* dmenu and clipmenu selection*/
 
 static const char *colors[][3] = {
     /*               fg         bg         border */
     [SchemeNorm] = { col_fg,    col_bg,    col_border },
     [SchemeSel]  = { col_fg_sel,col_bg_sel,col_border_sel },
+    [SchemeHid]  = { col_fg_sel,col_hide_bg,col_border_sel },
 };
 
 /* tagging */
@@ -80,7 +82,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
-    "-nb", col_menu, "-nf", col_fg, "-sb", col_menu_sel, "-sf", col_fg,
+    "-nb", col_menu, "-nf", col_fg, "-sb", col_menu_sel, "-sf", col_bg,
     "-p", "dmenu>", NULL };
 static const char *termcmd[]		= { "dwm_terminal.sh",	NULL };
 static const char *audioup[]		= { "audio_up.sh",	NULL };
@@ -101,25 +103,26 @@ static const char *clipmenucmd[] = {
     "-nb", col_menu,
     "-nf", col_fg,
     "-sb", col_menu_sel,
-    "-sf", col_fg,
+    "-sf", col_bg,
     NULL
 };
 
-#include "movestack.c"
 static const Key keys[] = {
 	/* modifier		key		function	argument */
 	{ MODKEY,		XK_p,		spawn,		{.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	XK_Return,	spawn,		{.v = termcmd } },
 	//{ MODKEY|ShiftMask,	XK_Return,	view,		{.ui = 1 << 2} },
 	{ MODKEY,		XK_F11,		togglebar,	{0} },
-	{ MODKEY,		XK_j,		focusstack,	{.i = +1 } },
-	{ MODKEY,		XK_k,		focusstack,	{.i = -1 } },
+	//{ MODKEY,		XK_j,		focusstack,	{.i = +1 } },
+	//{ MODKEY,		XK_k,		focusstack,	{.i = -1 } },
+	{ MODKEY,		XK_j,		focusstackvis,	{.i = +1 } },
+	{ MODKEY,		XK_k,		focusstackvis,	{.i = -1 } },
 	{ MODKEY,		XK_i,		incnmaster,	{.i = +1 } },
 	{ MODKEY,		XK_d,		incnmaster,	{.i = -1 } },
 	{ MODKEY,		XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY,		XK_l,		setmfact,	{.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      focusstackhid,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      focusstackhid,      {.i = -1 } },
 	{ MODKEY,		XK_Return, 	zoom,		{0} },
 	{ MODKEY,		XK_Tab,		view,		{0} },
 	{ MODKEY|ShiftMask,	XK_c,		killclient,	{0} },
@@ -133,6 +136,10 @@ static const Key keys[] = {
 	{ MODKEY,		XK_period,	focusmon,	{.i = +1 } },
 	{ MODKEY|ShiftMask,	XK_comma,	tagmon,		{.i = -1 } },
 	{ MODKEY|ShiftMask,	XK_period,	tagmon,		{.i = +1 } },
+	{ MODKEY,                       XK_s,      show,           {0} },
+	{ MODKEY|ShiftMask,             XK_s,      showall,        {0} },
+	{ MODKEY|ShiftMask,                       XK_h,      hide,           {0} },
+
 	TAGKEYS(		XK_1,				0)
 	TAGKEYS(		XK_2,				1)
 	TAGKEYS(		XK_3,				2)
@@ -157,7 +164,7 @@ static const Key keys[] = {
 	{ MODKEY,		XK_b,		spawn,		{.v = mpcprev } },
 	{ MODKEY,		XK_u,		spawn,		{.v = mpcrand } },
 	{ MODKEY|ShiftMask,	XK_p,		spawn,		{.v = clipmenucmd } },
-	{ MODKEY|ShiftMask,	XK_h,		spawn,		{.v = move_mouse } },
+	{ MODKEY|ControlMask,	XK_h,		spawn,		{.v = move_mouse } },
 };
 
 /* button definitions */
@@ -166,6 +173,7 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,		{0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
