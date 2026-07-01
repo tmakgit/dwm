@@ -107,6 +107,8 @@ static const char *clipmenucmd[] = {
     NULL
 };
 
+#include "movestack.c"
+
 static const Key keys[] = {
 	/* modifier		key		function	argument */
 	{ MODKEY,		XK_p,		spawn,		{.v = dmenucmd } },
@@ -117,12 +119,17 @@ static const Key keys[] = {
 	//{ MODKEY,		XK_k,		focusstack,	{.i = -1 } },
 	{ MODKEY,		XK_j,		focusstackvis,	{.i = +1 } },
 	{ MODKEY,		XK_k,		focusstackvis,	{.i = -1 } },
+	{ MODKEY|ShiftMask, XK_j,	movestack,	{.i = +1 } },
+	{ MODKEY|ShiftMask, XK_k,	movestack,	{.i = -1 } },
+	{ MODKEY|ControlMask, XK_j, focusstackhid,      {.i = +1 } },
+	{ MODKEY|ControlMask, XK_k, focusstackhid,      {.i = -1 } },
+	{ MODKEY,       XK_s,       show,           {0} },
+	{ MODKEY|ShiftMask, XK_s, showall,        {0} },
+	{ MODKEY|ShiftMask, XK_h, 	hide,           {0} },
 	{ MODKEY,		XK_i,		incnmaster,	{.i = +1 } },
 	{ MODKEY,		XK_d,		incnmaster,	{.i = -1 } },
 	{ MODKEY,		XK_h,		setmfact,	{.f = -0.05} },
 	{ MODKEY,		XK_l,		setmfact,	{.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      focusstackhid,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      focusstackhid,      {.i = -1 } },
 	{ MODKEY,		XK_Return, 	zoom,		{0} },
 	{ MODKEY,		XK_Tab,		view,		{0} },
 	{ MODKEY|ShiftMask,	XK_c,		killclient,	{0} },
@@ -132,13 +139,11 @@ static const Key keys[] = {
 	{ MODKEY,		XK_space,	setlayout,	{0} },
 	{ MODKEY|ShiftMask,	XK_space,	togglefloating,	{0} },
 	{ MODKEY|ShiftMask,	XK_bracketleft,	tag,		{.ui = ~0 } },
+	{ MODKEY|ShiftMask,	XK_bracketright ,		spawn,		{.v = move_mouse } },
 	{ MODKEY,		XK_comma,	focusmon,	{.i = -1 } },
 	{ MODKEY,		XK_period,	focusmon,	{.i = +1 } },
 	{ MODKEY|ShiftMask,	XK_comma,	tagmon,		{.i = -1 } },
 	{ MODKEY|ShiftMask,	XK_period,	tagmon,		{.i = +1 } },
-	{ MODKEY,                       XK_s,      show,           {0} },
-	{ MODKEY|ShiftMask,             XK_s,      showall,        {0} },
-	{ MODKEY|ShiftMask,                       XK_h,      hide,           {0} },
 
 	TAGKEYS(		XK_1,				0)
 	TAGKEYS(		XK_2,				1)
@@ -164,7 +169,6 @@ static const Key keys[] = {
 	{ MODKEY,		XK_b,		spawn,		{.v = mpcprev } },
 	{ MODKEY,		XK_u,		spawn,		{.v = mpcrand } },
 	{ MODKEY|ShiftMask,	XK_p,		spawn,		{.v = clipmenucmd } },
-	{ MODKEY|ControlMask,	XK_h,		spawn,		{.v = move_mouse } },
 };
 
 /* button definitions */
