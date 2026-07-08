@@ -94,8 +94,8 @@ static const char *mpcrand[]		= { "mpc_rand.sh",			NULL };
 static const char *print_screen[]	= { "print_screen.sh",		NULL };
 static const char *area_screen[]	= { "area_screen.sh",		NULL };
 static const char *move_mouse[]		= { "mouse_top_right.sh", 	NULL };
-static const char *win_rename[]		= { "win_rename.sh", 		NULL };
-static const char *clipmenucmd[]    = {
+
+static const char *clipmenucmd[] = {
     "clipmenu", "-i",
     "-fn", dmenufont,
     "-p",  "clipmenu>",
@@ -105,7 +105,7 @@ static const char *clipmenucmd[]    = {
     "-sf", col_bg,
     NULL
 };
-static const char *dmenucmd[] 		= { 
+static const char *dmenucmd[] = { 
 	"dmenu_run", 
 	"-m", dmenumon, 
 	"-fn", dmenufont,
