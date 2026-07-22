@@ -82,18 +82,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *termcmd[]		= { "dwm_terminal.sh",		NULL };
-static const char *audioup[]		= { "audio_up.sh",			NULL };
-static const char *audiodown[]		= { "audio_down.sh",		NULL };
-static const char *audiomute[]		= { "audio_mute.sh",		NULL };
-static const char *screenlock[]		= { "dwm_lock.sh",			NULL };
-static const char *mpcplay[]		= { "mpc_play.sh",			NULL };
-static const char *mpcnext[]		= { "mpc_next.sh",			NULL };
-static const char *mpcprev[]		= { "mpc_prev.sh",			NULL };
-static const char *mpcrand[]		= { "mpc_rand.sh",			NULL };
-static const char *print_screen[]	= { "print_screen.sh",		NULL };
-static const char *area_screen[]	= { "area_screen.sh",		NULL };
-static const char *move_mouse[]		= { "mouse_top_right.sh", 	NULL };
+static const char *termcmd[]		= { "dwm_terminal",		NULL };
+static const char *audioup[]		= { "audio_up",			NULL };
+static const char *audiodown[]		= { "audio_down",		NULL };
+static const char *audiomute[]		= { "audio_mute",		NULL };
+static const char *screenlock[]		= { "dwm_lock",			NULL };
+static const char *mpcplay[]		= { "mpc_play",			NULL };
+static const char *mpcnext[]		= { "mpc_next",			NULL };
+static const char *mpcprev[]		= { "mpc_prev",			NULL };
+static const char *mpcrand[]		= { "mpc_rand",			NULL };
+static const char *print_screen[]	= { "print_screen",		NULL };
+static const char *area_screen[]	= { "area_screen",		NULL };
+static const char *move_mouse[]		= { "mouse_top_right", 	NULL };
 
 static const char *clipmenucmd[] = {
     "clipmenu", "-i",
