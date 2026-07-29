@@ -93,6 +93,7 @@ static const char *mpcprev[]		= { "mpc_prev",			NULL };
 static const char *mpcrand[]		= { "mpc_rand",			NULL };
 static const char *print_screen[]	= { "print_screen",		NULL };
 static const char *area_screen[]	= { "area_screen",		NULL };
+static const char *latest_shot[]	= { "latest_shot",		NULL };
 static const char *move_mouse[]		= { "mouse_top_right", 	NULL };
 
 static const char *clipmenucmd[] = {
@@ -164,6 +165,7 @@ static const Key keys[] = {
     {MODKEY|ControlMask,XK_l,           spawn,	        {.v=screenlock}},
     {0,                 XK_Print,       spawn,	        {.v=area_screen}},
     {ShiftMask,         XK_Print,       spawn,	        {.v=print_screen}},
+    {MODKEY,         	XK_Print,       spawn,	        {.v=latest_shot}},
     TAGKEYS(            XK_1,           0)
     TAGKEYS(            XK_2,           1)
     TAGKEYS(            XK_3,           2)
