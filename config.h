@@ -43,7 +43,7 @@ static const Rule rules[] = {
     {"teams-for-linux", NULL,       NULL,           1<<3,   0,      -1},
     {"Slack",           NULL,       NULL,           1<<3,   0,      -1},
     {"zoom",            NULL,       NULL,           1<<3,   0,      -1},
-    {"Bitwarden",       NULL,       NULL,           1<<4,   0,      -1},
+    {"bitwarden",       NULL,       NULL,           1<<4,   0,      -1},
     {"1password",       NULL,       NULL,           1<<4,   0,      -1},
     {"scrcpy",       	NULL,       NULL,           1<<4,   0,      -1},
     {"Nxplayer.bin",    NULL,       NULL,           1<<5,   0,      -1},
