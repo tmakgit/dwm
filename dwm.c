@@ -2006,8 +2006,8 @@ togglewin(const Arg *arg)
 	} else {
 		if (HIDDEN(c))
 			showwin(c);
-		focus(c);
 		restack(selmon);
+		focus(c);
 	}
 }
 
