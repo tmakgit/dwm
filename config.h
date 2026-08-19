@@ -25,6 +25,7 @@ static const char *colors[][3] = {
     [SchemeNorm] = { col_fg,    	col_bg,    	col_border },
     [SchemeSel]  = { col_fg_sel,	col_bg_sel,	col_border_sel },
     [SchemeHid]  = { col_hide,		col_bg,		col_hide },
+    [SchemeLayoutSel]   = { col_bg,		col_border_sel,		col_border },
 };
 
 /* tagging */

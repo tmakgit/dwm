@@ -59,7 +59,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeHid }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeHid, SchemeLayoutSel }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
@@ -733,18 +733,25 @@ detachstack(Client *c)
 }
 
 Monitor *
+/* modifying to not wrap around at end monitor */
 dirtomon(int dir)
 {
-	Monitor *m = NULL;
+	Monitor *m, *best = selmon;
 
 	if (dir > 0) {
-		if (!(m = selmon->next))
-			m = mons;
-	} else if (selmon == mons)
-		for (m = mons; m->next; m = m->next);
-	else
-		for (m = mons; m->next != selmon; m = m->next);
-	return m;
+		/* nearest monitor physically to the right */
+		for (m = mons; m; m = m->next)
+			if (m->mx > selmon->mx && (best == selmon || m->mx < best->mx))
+				best = m;
+	}
+	else {
+		/* nearest monitor physically to the left */
+		for (m = mons; m; m = m->next)
+			if (m->mx < selmon->mx && (best == selmon || m->mx > best->mx))
+				best = m;
+	}
+
+	return best;
 }
 
 void
@@ -785,8 +792,12 @@ drawbar(Monitor *m)
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	/* layout colors change for selected monitor */
+	drw_setscheme(drw, scheme[m == selmon ? SchemeLayoutSel : SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	/* reset colors back */
+	drw_setscheme(drw, scheme[SchemeNorm]);
+
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (n > 0) {
