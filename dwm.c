@@ -195,6 +195,7 @@ static void monocle(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
 static Client *nexttiled(Client *c);
+static Client *nextvisible(Client *c, Monitor *m);
 static void pop(Client *c);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
@@ -901,8 +902,6 @@ focus(Client *c)
 			selmon = c->mon;
 		if (c->isurgent)
 			seturgent(c, 0);
-		detachstack(c);
-		attachstack(c);
 		grabbuttons(c, 1);
 		XSetWindowBorder(dpy, c->win, scheme[SchemeSel][ColBorder].pixel);
 		setfocus(c);
@@ -911,6 +910,8 @@ focus(Client *c)
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 	}
 	selmon->sel = c;
+	if(c && selmon->lt[selmon->sellt]->arrange == monocle)
+		XRaiseWindow(dpy, c->win);
 	drawbars();
 }
 
@@ -979,8 +980,8 @@ focusstack(int inc, int hid)
 					c = i;
 	}
 	if (c) {
-		focus(c);
 		restack(selmon);
+		focus(c);
 		if (HIDDEN(c)) {
 			showwin(c);
 			c->mon->hidsel = 1;
@@ -1366,6 +1367,25 @@ nexttiled(Client *c)
 	for (; c && (c->isfloating || !ISVISIBLE(c) || HIDDEN(c)); c = c->next);
 	return c;
 }
+
+static Client *
+nextvisible(Client *c, Monitor *m)
+{
+	Client *n, *prev = NULL;
+
+	for (n = c->next;
+		n && (!ISVISIBLE(n) || HIDDEN(n));
+		n = n->next);
+
+	if (n)
+		return n;
+
+	for (n = m->clients; n && n != c; n = n->next)
+		if (ISVISIBLE(n) && !HIDDEN(n))
+			prev = n;
+	return prev;
+}
+
 
 void
 pop(Client *c)
@@ -2009,6 +2029,11 @@ unmanage(Client *c, int destroyed)
 {
 	Monitor *m = c->mon;
 	XWindowChanges wc;
+	Client *nc = NULL;
+	int selected = (m->sel == c);
+
+	if (selected)
+		nc = nextvisible(c, m);
 
 	detach(c);
 	detachstack(c);
@@ -2025,9 +2050,10 @@ unmanage(Client *c, int destroyed)
 		XUngrabServer(dpy);
 	}
 	free(c);
-	focus(NULL);
 	updateclientlist();
 	arrange(m);
+	if (selected)
+		focus(nc);
 }
 
 void
