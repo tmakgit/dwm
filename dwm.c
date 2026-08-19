@@ -293,6 +293,7 @@ struct Pertag {
 	unsigned int sellts[LENGTH(tags) + 1]; /* selected layouts */
 	const Layout *ltidxs[LENGTH(tags) + 1][2]; /* matrix of tags and layouts indexes  */
 	int showbars[LENGTH(tags) + 1]; /* display bar for the current tag */
+	Client *selclients[LENGTH(tags) + 1];
 };
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
@@ -910,6 +911,8 @@ focus(Client *c)
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 	}
 	selmon->sel = c;
+	if (c)
+		selmon->pertag->selclients[selmon->pertag->curtag] = c;
 	if(c && selmon->lt[selmon->sellt]->arrange == monocle)
 		XRaiseWindow(dpy, c->win);
 	drawbars();
@@ -980,12 +983,16 @@ focusstack(int inc, int hid)
 					c = i;
 	}
 	if (c) {
+		int hidden = HIDDEN(c);
+
+		if (hidden)
+			showwin(c);
+
 		restack(selmon);
 		focus(c);
-		if (HIDDEN(c)) {
-			showwin(c);
-			c->mon->hidsel = 1;
-		}
+
+		if (hidden)
+				c->mon->hidsel = 1;
 	}
 }
 
@@ -1606,8 +1613,18 @@ scan(void)
 void
 sendmon(Client *c, Monitor *m)
 {
+	Monitor *oldmon;
+	unsigned int i;
+
 	if (c->mon == m)
 		return;
+
+	oldmon = c->mon;
+
+	for (i = 0; i <= LENGTH(tags); i++)
+		if (oldmon->pertag->selclients[i] == c)
+			oldmon->pertag->selclients[i] = NULL;
+
 	unfocus(c, 1);
 	detach(c);
 	detachstack(c);
@@ -1959,6 +1976,8 @@ toggletag(const Arg *arg)
 void
 toggleview(const Arg *arg)
 {
+	Client *c;
+	XEvent ev;
 	unsigned int newtagset = selmon->tagset[selmon->seltags] ^ (arg->ui & TAGMASK);
 	int i;
 
@@ -1987,8 +2006,19 @@ toggleview(const Arg *arg)
 		if (selmon->showbar != selmon->pertag->showbars[selmon->pertag->curtag])
 			togglebar(NULL);
 
-		focus(NULL);
+		c = selmon->pertag->selclients[selmon->pertag->curtag];
+
+		if (!c || c->mon != selmon || !ISVISIBLE(c) || HIDDEN(c)) {
+			for (c = selmon->clients;
+				c && (!ISVISIBLE(c) || HIDDEN(c));
+				c = c->next);
+		}
+
 		arrange(selmon);
+		focus(c);
+
+		XSync(dpy, False);
+		while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 	}
 }
 
@@ -2031,6 +2061,7 @@ unmanage(Client *c, int destroyed)
 	XWindowChanges wc;
 	Client *nc = NULL;
 	int selected = (m->sel == c);
+	unsigned int i;
 
 	if (selected)
 		nc = nextvisible(c, m);
@@ -2049,6 +2080,11 @@ unmanage(Client *c, int destroyed)
 		XSetErrorHandler(xerror);
 		XUngrabServer(dpy);
 	}
+
+	for (i = 0; i <= LENGTH(tags); i++)
+		if (m->pertag->selclients[i] == c)
+			m->pertag->selclients[i] = NULL;
+
 	free(c);
 	updateclientlist();
 	arrange(m);
@@ -2310,6 +2346,8 @@ updatewmhints(Client *c)
 void
 view(const Arg *arg)
 {
+	Client *c;
+	XEvent ev;
 	int i;
 	unsigned int tmptag;
 
@@ -2341,8 +2379,18 @@ view(const Arg *arg)
 	if (selmon->showbar != selmon->pertag->showbars[selmon->pertag->curtag])
 		togglebar(NULL);
 
-	focus(NULL);
+	c = selmon->pertag->selclients[selmon->pertag->curtag];
+
+	if (!c || c->mon != selmon || !ISVISIBLE(c) || HIDDEN(c)) {
+		for (c = selmon->clients;
+			c && (!ISVISIBLE(c) || HIDDEN(c));
+			c = c->next);
+	}
 	arrange(selmon);
+	focus(c);
+
+	XSync(dpy, False);
+	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 }
 
 Client *
