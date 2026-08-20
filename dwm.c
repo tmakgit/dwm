@@ -833,6 +833,8 @@ drawbar(Monitor *m)
 					remainder--;
 				}
 				drw_text(drw, x, 0, tabw, bh, lrpad / 2, c->name, 0);
+				drw_setscheme(drw, scheme[SchemeNorm]);
+				drw_rect(drw, x + tabw - 1, 3, 1, bh - 6, 1, 0);
 				x += tabw;
 			}
 		} else {
