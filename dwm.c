@@ -526,8 +526,18 @@ cleanup(void)
 {
 	Arg a = {.ui = ~0};
 	Layout foo = { "", NULL };
+	Client *c;
 	Monitor *m;
 	size_t i;
+
+	/* Hidden clients must be mapped before unmanage marks them withdrawn. */
+	for (m = mons; m; m = m->next)
+		for (c = m->clients; c; c = c->next)
+			if (HIDDEN(c)) {
+				XMapWindow(dpy, c->win);
+				setclientstate(c, NormalState);
+			}
+	XSync(dpy, False);
 
 	view(&a);
 	selmon->lt[selmon->sellt] = &foo;
@@ -809,7 +819,7 @@ drawbar(Monitor *m)
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 	/* reset colors back */
 	drw_setscheme(drw, scheme[SchemeNorm]);
-
+	x = drw_text(drw, x, 0, TEXTW("|"), bh, lrpad / 2, "|", 0);
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (n > 0) {
@@ -1456,16 +1466,6 @@ propertynotify(XEvent *e)
 void
 quit(const Arg *arg)
 {
-	// fix: reloading dwm keeps all the hidden clients hidden
-	Monitor *m;
-	Client *c;
-	for (m = mons; m; m = m->next) {
-		if (m) {
-			for (c = m->stack; c; c = c->next)
-				if (c && HIDDEN(c)) showwin(c);
-		}
-	}
-
 	running = 0;
 }
 
