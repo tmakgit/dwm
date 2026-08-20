@@ -939,7 +939,7 @@ focusmon(const Arg *arg)
 		return;
 	unfocus(selmon->sel, 0);
 	selmon = m;
-	focus(NULL);
+	focus(m->sel && ISVISIBLE(m->sel) && !HIDDEN(m->sel) ? m->sel : NULL);
 }
 
 void

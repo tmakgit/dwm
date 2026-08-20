@@ -46,7 +46,7 @@ static const Rule rules[] = {
     {"zoom",            NULL,       NULL,           1<<3,   0,      1},
     {"bitwarden",       NULL,       NULL,           1<<4,   0,      1},
     {"1password",       NULL,       NULL,           1<<4,   0,      1},
-    {"scrcpy",       	NULL,       NULL,           1<<4,   0,      1},
+    {"scrcpy",       	NULL,       NULL,           1<<4,   -1,     1},
     {"firefox",         NULL,       NULL,           0,      0,      -1},
     {"signal",          NULL,       NULL,           1<<7,   0,      1},
     {"Zathura",         NULL,       NULL,           0,      0,      -1},
