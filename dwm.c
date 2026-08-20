@@ -222,7 +222,6 @@ static void showwin(Client *c);
 static void showhide(Client *c);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
-static void tagmon(const Arg *arg);
 static void tagmonfollow(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
@@ -1931,14 +1930,6 @@ tag(const Arg *arg)
 }
 
 void
-tagmon(const Arg *arg)
-{
-	if (!selmon->sel || !mons->next)
-		return;
-	sendmon(selmon->sel, dirtomon(arg->i));
-}
-
-void
 tagmonfollow(const Arg *arg)
 {
 	Monitor *m;
@@ -1949,6 +1940,7 @@ tagmonfollow(const Arg *arg)
 	m = dirtomon(arg->i);
 	sendmon(selmon->sel, m);
 	focusmonitor(m);
+}
 
 void
 tile(Monitor *m)
