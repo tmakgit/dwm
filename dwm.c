@@ -1896,9 +1896,14 @@ spawn(const Arg *arg)
 void
 tag(const Arg *arg)
 {
+	Client *c, *nc;
+
 	if (selmon->sel && arg->ui & TAGMASK) {
-		selmon->sel->tags = arg->ui & TAGMASK;
-		focus(NULL);
+		c = selmon->sel;
+		nc = nextvisible(c, selmon);
+		c->tags = arg->ui & TAGMASK;
+		if (!ISVISIBLE(c))
+			focus(nc);
 		arrange(selmon);
 	}
 }
@@ -1963,14 +1968,18 @@ togglefloating(const Arg *arg)
 void
 toggletag(const Arg *arg)
 {
+	Client *c, *nc;
 	unsigned int newtags;
 
 	if (!selmon->sel)
 		return;
-	newtags = selmon->sel->tags ^ (arg->ui & TAGMASK);
+	c = selmon->sel;
+	newtags = c->tags ^ (arg->ui & TAGMASK);
 	if (newtags) {
-		selmon->sel->tags = newtags;
-		focus(NULL);
+		nc = nextvisible(c, selmon);
+		c->tags = newtags;
+		if (!ISVISIBLE(c))
+			focus(nc);
 		arrange(selmon);
 	}
 }
