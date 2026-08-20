@@ -1933,13 +1933,16 @@ void
 tagmonfollow(const Arg *arg)
 {
 	Monitor *m;
+	Client *c;
 
 	if (!selmon->sel || !mons->next)
 		return;
 
+	c = selmon->sel;
 	m = dirtomon(arg->i);
-	sendmon(selmon->sel, m);
+	sendmon(c, m);
 	focusmonitor(m);
+	focus(c);
 }
 
 void
