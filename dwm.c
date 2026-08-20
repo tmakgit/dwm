@@ -174,6 +174,7 @@ static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
+static void focusmonitor(Monitor *m);
 static void focusstackvis(const Arg *arg);
 static void focusstackhid(const Arg *arg);
 static void focusstack(int inc, int vis);
@@ -222,6 +223,7 @@ static void showhide(Client *c);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
+static void tagmonfollow(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -466,9 +468,7 @@ buttonpress(XEvent *e)
 	click = ClkRootWin;
 	/* focus monitor if necessary */
 	if ((m = wintomon(ev->window)) && m != selmon) {
-		unfocus(selmon->sel, 1);
-		selmon = m;
-		focus(NULL);
+		focusmonitor(m);
 	}
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
@@ -887,8 +887,9 @@ enternotify(XEvent *e)
 	c = wintoclient(ev->window);
 	m = c ? c->mon : wintomon(ev->window);
 	if (m != selmon) {
-		unfocus(selmon->sel, 1);
-		selmon = m;
+		focusmonitor(m);
+		if (!c || c == selmon->sel)
+			return;
 	} else if (!c || c == selmon->sel)
 		return;
 	focus(c);
@@ -958,9 +959,20 @@ focusmon(const Arg *arg)
 		return;
 	if ((m = dirtomon(arg->i)) == selmon)
 		return;
+	focusmonitor(m);
+}
+
+void
+focusmonitor(Monitor *m)
+{
+	Client *c;
+
+	if(!m || m == selmon)
+		return;
 	unfocus(selmon->sel, 0);
 	selmon = m;
-	focus(m->sel && ISVISIBLE(m->sel) && !HIDDEN(m->sel) ? m->sel : NULL);
+	c = m->sel;
+	focus(c && ISVISIBLE(c) && !HIDDEN(c) ? c : NULL);
 }
 
 void
@@ -1326,9 +1338,7 @@ motionnotify(XEvent *e)
 	if (ev->window != root)
 		return;
 	if ((m = recttomon(ev->x_root, ev->y_root, 1, 1)) != mon && mon) {
-		unfocus(selmon->sel, 1);
-		selmon = m;
-		focus(NULL);
+		focusmonitor(m);
 	}
 	mon = m;
 }
@@ -1386,8 +1396,7 @@ movemouse(const Arg *arg)
 	XUngrabPointer(dpy, CurrentTime);
 	if ((m = recttomon(c->x, c->y, c->w, c->h)) != selmon) {
 		sendmon(c, m);
-		selmon = m;
-		focus(NULL);
+		focusmonitor(m);
 	}
 }
 
@@ -1928,6 +1937,18 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
+
+void
+tagmonfollow(const Arg *arg)
+{
+	Monitor *m;
+
+	if (!selmon->sel || !mons->next)
+		return;
+
+	m = dirtomon(arg->i);
+	sendmon(selmon->sel, m);
+	focusmonitor(m);
 
 void
 tile(Monitor *m)
