@@ -1682,13 +1682,14 @@ sendmon(Client *c, Monitor *m)
 	unfocus(c, 1);
 	detach(c);
 	detachstack(c);
+
 	c->mon = m;
-	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
+	c->tags = m->tagset[m->seltags];
+
 	attachbottom(c);
 	attachstack(c);
 	setclienttagprop(c);
-	if (c->isfullscreen)
-		resizeclient(c, m->mx, m->my, m->mw, m->mh);
+
 	focus(NULL);
 	arrange(NULL);
 }
