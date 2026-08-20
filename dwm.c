@@ -1287,7 +1287,10 @@ manage(Window w, XWindowAttributes *wa)
 	arrange(c->mon);
 	if (!HIDDEN(c))
 		XMapWindow(dpy, c->win);
-	focus(NULL);
+	if (c->mon == selmon)
+		focus(NULL);
+	else
+		focus(selmon->sel);
 }
 
 void
