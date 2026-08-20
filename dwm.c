@@ -1236,7 +1236,9 @@ manage(Window w, XWindowAttributes *wa)
 	updatewmhints(c);
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
-	if (!c->isfloating)
+	if (c->isfloating < 0)
+		c->isfloating = c->oldstate = 0;
+	else if (!c->isfloating)
 		c->isfloating = c->oldstate = trans != None || c->isfixed;
 	if (c->isfloating)
 		XRaiseWindow(dpy, c->win);
@@ -2036,8 +2038,8 @@ togglewin(const Arg *arg)
 	} else {
 		if (HIDDEN(c))
 			showwin(c);
-		restack(selmon);
 		focus(c);
+		restack(selmon);
 	}
 }
 
