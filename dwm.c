@@ -1570,6 +1570,8 @@ restack(Monitor *m)
 				wc.sibling = c->win;
 			}
 	}
+	if (m->lt[m->sellt]->arrange == monocle)
+		XRaiseWindow(dpy, m->sel->win);
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 }
