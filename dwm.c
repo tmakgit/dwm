@@ -843,25 +843,29 @@ drawbar(Monitor *m)
 					remainder--;
 				}
 				drw_text(drw, x, 0, tabw, bh, lrpad / 2, c->name, 0);
-				if (c->isfloating)
+				if (c->isfloating) 
 					drw_rect(drw, x + boxs, boxs, boxw, boxw, c->isfixed, 0);
-
+/*
 				Client *next;
 				for (next = c->next;
 						next && !ISVISIBLE(next);
 						next = next->next);
 
 				if (next) {
-					drw_setscheme(drw, scheme[SchemeNorm]);
-					drw_text(drw, x + tabw - TEXTW("|"), 0,
-							TEXTW("|"), bh, lrpad / 2, "|", 0);
-				}
+				*/
+				drw_setscheme(drw, scheme[SchemeNorm]);
+				drw_text(drw, x + tabw - TEXTW("|"), 0,
+					TEXTW("|"), bh, lrpad / 2, "|", 0);
+				//}
 				x += tabw;
 			}
 		} else {
 			drw_setscheme(drw, scheme[SchemeNorm]);
 			drw_rect(drw, x, 0, w, bh, 1, 1);
 		}
+		drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_text(drw, m->mw - tw - TEXTW("|"), 0,
+				TEXTW("|"), bh, lrpad / 2, "|", 0);
 	}
 	m->bt = n;
 	m->btw = w;
